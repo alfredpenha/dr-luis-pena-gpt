@@ -1,0 +1,69 @@
+﻿---
+import "@/styles/global.css";
+import Analytics from "@/components/analytics/Analytics.astro";
+import { site } from "@/lib/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title
+  ? site.seo.titleTemplate.replace("%s", title)
+  : site.seo.defaultTitle;
+const pageDescription = description ?? site.seo.defaultDescription;
+---
+
+<!doctype html>
+<html lang={site.locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content={new URL(Astro.url.pathname, site.seo.siteUrl).toString()}
+    />
+    <meta property="og:image:alt" content={site.seo.defaultImageAlt} />
+    <link
+      rel="canonical"
+      href={new URL(Astro.url.pathname, site.seo.siteUrl).toString()}
+    />
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <header class="border-b border-slate-200 bg-white/80 backdrop-blur">
+      <nav
+        class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
+      >
+        <a class="text-lg font-semibold text-slate-900" href="/"
+          >{site.brand.name}</a
+        >
+        <div class="flex items-center gap-5 text-sm font-medium text-slate-700">
+          <a class="transition hover:text-slate-900" href="/"
+            >{site.navigation.homeLabel}</a
+          >
+          <a class="transition hover:text-slate-900" href="/privacy"
+            >{site.navigation.privacyLabel}</a
+          >
+        </div>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="border-t border-slate-200 bg-white">
+      <div
+        class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 p-6 text-sm text-slate-600"
+      >
+        <p>{site.brand.name}</p>
+        <p>{site.footer.legalLine}</p>
+      </div>
+    </footer>
+    <Analytics />
+  </body>
+</html>

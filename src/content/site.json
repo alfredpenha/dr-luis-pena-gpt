@@ -1,0 +1,50 @@
+{
+  "locale": "es",
+  "brand": {
+    "name": "Dr. Luis Peña",
+    "tagline": "Atención médica integral"
+  },
+  "seo": {
+    "siteUrl": "https://example.github.io/dr-luis-pena-gpt",
+    "defaultTitle": "Dr. Luis Peña | Sitio Oficial",
+    "titleTemplate": "%s | Dr. Luis Peña",
+    "defaultDescription": "Consulta médica con enfoque preventivo y seguimiento personalizado.",
+    "defaultImageAlt": "Consulta médica"
+  },
+  "navigation": {
+    "homeLabel": "Inicio",
+    "privacyLabel": "Privacidad"
+  },
+  "home": {
+    "title": "Medicina familiar con cercanía humana",
+    "subtitle": "Agenda tu consulta para evaluación, tratamiento y plan de seguimiento.",
+    "ctaLabel": "Ver política de privacidad",
+    "ctaHref": "/privacy"
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "updatedAt": "15 de febrero de 2026",
+    "sections": [
+      {
+        "heading": "Datos que recopilamos",
+        "body": "Recopilamos únicamente los datos necesarios para brindar servicios médicos y administrativos."
+      },
+      {
+        "heading": "Uso de la información",
+        "body": "La información se utiliza para gestión de citas, seguimiento clínico y comunicación relacionada con tu atención."
+      },
+      {
+        "heading": "Contacto",
+        "body": "Para consultas sobre privacidad, comunícate mediante los canales oficiales del consultorio."
+      }
+    ]
+  },
+  "footer": {
+    "legalLine": "Todos los derechos reservados."
+  },
+  "analytics": {
+    "enabled": false,
+    "provider": "google-analytics",
+    "measurementId": "G-XXXXXXXXXX"
+  }
+}
