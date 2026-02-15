@@ -41,6 +41,14 @@
         "href": "/"
       },
       {
+        "label": "Servicios",
+        "href": "/#servicios"
+      },
+      {
+        "label": "Ubicacion",
+        "href": "/#ubicacion"
+      },
+      {
         "label": "Privacidad",
         "href": "/privacy"
       }

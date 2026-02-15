@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logo from "@/assets/images/logo-transparente.png";
 import Container from "@/components/ui/Container.astro";
 import Button from "@/components/ui/Button.astro";
 import { site } from "@/lib/content";
@@ -6,40 +8,84 @@ import { withBase } from "@/lib/urls";
 ---
 
 <header
-  class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur"
+  class="sticky top-0 z-50 border-b border-slate-200/90 bg-white/90 backdrop-blur"
 >
-  <Container class="py-4">
-    <nav
-      class="flex items-center justify-between gap-4"
-      aria-label={site.meta.siteName}
-    >
+  <Container class="py-3">
+    <div class="flex items-center justify-between gap-3">
       <a
         href={withBase("/")}
-        class="text-base font-semibold text-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+        class="flex min-w-0 items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+        aria-label={site.brand.clinicName}
       >
-        {site.meta.siteName}
+        <Image
+          src={logo}
+          alt={site.brand.clinicName}
+          widths={[48, 64]}
+          class="size-12 object-contain"
+        />
+        <div class="min-w-0">
+          <p class="truncate text-sm font-semibold leading-[22px] text-text">
+            {site.brand.clinicName}
+          </p>
+          <p class="truncate text-xs leading-5 text-muted-600">
+            {site.brand.lockupText}
+          </p>
+        </div>
       </a>
-      <div class="flex items-center gap-4 sm:gap-6">
+
+      <nav
+        class="hidden items-center gap-6 md:flex"
+        aria-label="Navegacion principal"
+      >
         {
           site.nav.items.map((item) => (
             <a
               href={withBase(item.href)}
-              class="text-sm font-medium text-slate-700 transition hover:text-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+              class="text-sm font-medium leading-[22px] text-muted-700 transition hover:text-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
             >
               {item.label}
             </a>
           ))
         }
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <Button
+          href={site.ctas.primaryHref}
+          variant="whatsapp"
+          size="sm"
+          ariaLabel={site.ctas.primaryLabel}
+          trackEvent="click_whatsapp"
+          trackSource="header"
+        >
+          {site.ctas.primaryLabel}
+        </Button>
+
+        <details class="relative md:hidden">
+          <summary
+            class="flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-card border border-slate-200 bg-white text-sm font-semibold text-text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+            aria-label="Abrir menu de navegacion"
+          >
+            Menu
+          </summary>
+          <div
+            class="absolute right-0 top-12 w-56 rounded-block border border-slate-200 bg-white p-3 shadow-soft"
+          >
+            <nav class="flex flex-col gap-1" aria-label="Navegacion movil">
+              {
+                site.nav.items.map((item) => (
+                  <a
+                    href={withBase(item.href)}
+                    class="rounded-card px-3 py-2 text-sm font-medium text-muted-700 hover:bg-slate-50 hover:text-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+                  >
+                    {item.label}
+                  </a>
+                ))
+              }
+            </nav>
+          </div>
+        </details>
       </div>
-      <Button
-        href={site.ctas.primaryHref}
-        variant="whatsapp"
-        ariaLabel={site.ctas.primaryLabel}
-        trackEvent="click_whatsapp"
-        trackSource="header"
-      >
-        {site.ctas.primaryLabel}
-      </Button>
-    </nav>
+    </div>
   </Container>
 </header>

@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 import GA4 from "@/components/analytics/GA4.astro";
+import Footer from "@/components/sections/Footer.astro";
 import { site } from "@/lib/content";
 
 interface Props {
@@ -73,31 +74,7 @@ const physicianSchema = {
     <main>
       <slot />
     </main>
-    <footer class="border-t border-slate-200 bg-white">
-      <div
-        class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 p-6 text-sm text-slate-700"
-      >
-        <p>{site.doctor.fullName}</p>
-        <div class="flex items-center gap-4">
-          <a
-            href={`tel:${site.contact.phone}`}
-            data-track-event="click_call"
-            data-track-source="footer"
-            class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
-          >
-            {site.contact.phone}
-          </a>
-          <a
-            href={site.ctas.primaryHref}
-            data-track-event="click_whatsapp"
-            data-track-source="footer"
-            class="text-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
-          >
-            {site.ctas.primaryLabel}
-          </a>
-        </div>
-      </div>
-    </footer>
+    <Footer />
     <GA4 />
   </body>
 </html>
