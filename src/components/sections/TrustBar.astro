@@ -1,0 +1,18 @@
+---
+import Container from "@/components/ui/Container.astro";
+import { site } from "@/lib/content";
+---
+
+<section class="py-8 sm:py-10">
+  <Container>
+    <div class="grid gap-4 sm:grid-cols-3">
+      {
+        site.trustBar.items.map((item) => (
+          <div class="rounded-xl border border-slate-200 bg-white px-4 py-5 text-center shadow-sm">
+            <p class="text-sm font-semibold text-slate-800">{item}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

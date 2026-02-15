@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import Container from "@/components/ui/Container.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import { site } from "@/lib/content";
+import { getSiteImage } from "@/lib/images";
+---
+
+<section class="bg-white py-14 sm:py-20">
+  <Container>
+    <div class="grid items-start gap-8 lg:grid-cols-5">
+      <div class="lg:col-span-2">
+        <Image
+          src={getSiteImage(site.aboutDoctor.imageKey)}
+          alt={site.aboutDoctor.imageAlt}
+          widths={[420, 680, 960]}
+          sizes="(min-width: 1024px) 40vw, 100vw"
+          class="size-full rounded-2xl border border-slate-200 object-cover shadow-sm"
+        />
+      </div>
+      <div class="lg:col-span-3">
+        <SectionTitle
+          title={site.aboutDoctor.title}
+          subtitle={site.doctor.fullName}
+        />
+        <p
+          class="mt-4 inline-flex rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-700"
+        >
+          {site.doctor.credentialId}
+        </p>
+        <div class="mt-6 space-y-4">
+          {
+            site.aboutDoctor.bio.map((paragraph) => (
+              <p class="text-base text-slate-700">{paragraph}</p>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

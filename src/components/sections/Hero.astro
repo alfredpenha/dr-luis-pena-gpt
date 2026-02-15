@@ -1,31 +1,56 @@
-﻿---
-interface Props {
-  title: string;
-  subtitle: string;
-  ctaLabel: string;
-  ctaHref: string;
-}
+---
+import { Image } from "astro:assets";
+import Container from "@/components/ui/Container.astro";
+import Button from "@/components/ui/Button.astro";
+import { site } from "@/lib/content";
+import { getSiteImage } from "@/lib/images";
 
-const { title, subtitle, ctaLabel, ctaHref } = Astro.props;
+const heroImage = getSiteImage(site.hero.imageKey);
 ---
 
-<section class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
-  <div
-    class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-12"
-  >
-    <h1
-      class="text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
-    >
-      {title}
-    </h1>
-    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-700">
-      {subtitle}
-    </p>
-    <a
-      class="mt-8 inline-flex items-center rounded-full bg-teal-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-800"
-      href={ctaHref}
-    >
-      {ctaLabel}
-    </a>
-  </div>
+<section class="bg-gradient-to-b from-white to-slate-100 py-14 sm:py-20">
+  <Container>
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold tracking-wide text-red-700">
+          {site.doctor.fullName}
+        </p>
+        <h1
+          class="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+        >
+          {site.hero.headline}
+        </h1>
+        <p class="mt-5 max-w-2xl text-lg text-slate-700">
+          {site.hero.subheadline}
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button
+            href={site.ctas.primaryHref}
+            variant="whatsapp"
+            ariaLabel={site.ctas.primaryLabel}
+          >
+            {site.ctas.primaryLabel}
+          </Button>
+          <Button
+            href={site.ctas.secondaryHref}
+            variant="secondary"
+            ariaLabel={site.ctas.secondaryLabel}
+          >
+            {site.ctas.secondaryLabel}
+          </Button>
+        </div>
+      </div>
+      <div
+        class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+      >
+        <Image
+          src={heroImage}
+          alt={site.hero.imageAlt}
+          widths={[480, 768, 1024, 1280]}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          class="size-full object-cover"
+        />
+      </div>
+    </div>
+  </Container>
 </section>

@@ -1,18 +1,25 @@
-﻿---
+---
 import Base from "@/layouts/Base.astro";
+import Header from "@/components/sections/Header.astro";
 import Hero from "@/components/sections/Hero.astro";
-import Container from "@/components/ui/Container.astro";
-import { site } from "@/lib/site";
+import TrustBar from "@/components/sections/TrustBar.astro";
+import Services from "@/components/sections/Services.astro";
+import ClinicGallery from "@/components/sections/ClinicGallery.astro";
+import AboutDoctor from "@/components/sections/AboutDoctor.astro";
+import Process from "@/components/sections/Process.astro";
+import LocationHours from "@/components/sections/LocationHours.astro";
+import FinalCTA from "@/components/sections/FinalCTA.astro";
+import { site } from "@/lib/content";
 ---
 
-<Base title={site.home.title} description={site.home.subtitle}>
-  <Hero
-    title={site.home.title}
-    subtitle={site.home.subtitle}
-    ctaLabel={site.home.ctaLabel}
-    ctaHref={site.home.ctaHref}
-  />
-  <Container class="pb-20">
-    <p class="text-sm text-slate-600">{site.brand.tagline}</p>
-  </Container>
+<Base title={site.meta.title} description={site.meta.description}>
+  <Header />
+  <Hero />
+  <TrustBar />
+  <Services />
+  {site.sections.showClinicGallery && <ClinicGallery />}
+  <AboutDoctor />
+  {site.sections.showProcess && <Process />}
+  <LocationHours />
+  <FinalCTA />
 </Base>

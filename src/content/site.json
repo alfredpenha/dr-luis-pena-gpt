@@ -1,46 +1,197 @@
 {
-  "locale": "es",
-  "brand": {
-    "name": "Dr. Luis Peña",
-    "tagline": "Atención médica integral"
+  "meta": {
+    "siteName": "Consultorio del Dr. Luis Alberto Pena Molina",
+    "title": "Medicina General y Ultrasonido Diagnostico",
+    "description": "Atencion medica en consulta externa con enfoque clinico y ultrasonido diagnostico.",
+    "locale": "es-MX",
+    "baseUrl": "https://example.github.io/dr-luis-pena-gpt"
   },
-  "seo": {
-    "siteUrl": "https://example.github.io/dr-luis-pena-gpt",
-    "defaultTitle": "Dr. Luis Peña | Sitio Oficial",
-    "titleTemplate": "%s | Dr. Luis Peña",
-    "defaultDescription": "Consulta médica con enfoque preventivo y seguimiento personalizado.",
-    "defaultImageAlt": "Consulta médica"
+  "doctor": {
+    "fullName": "Dr. Luis Alberto Pena Molina",
+    "credentialId": "Cedula profesional: pendiente",
+    "specialties": ["Medicina General", "Ultrasonido Diagnostico"],
+    "shortBio": "Atencion clinica enfocada en prevencion, diagnostico oportuno y seguimiento del paciente."
   },
-  "navigation": {
-    "homeLabel": "Inicio",
-    "privacyLabel": "Privacidad"
+  "contact": {
+    "phone": "9616061492",
+    "whatsapp": "9616061492",
+    "address": "Direccion de consultorio pendiente",
+    "city": "Cintalapa",
+    "state": "Chiapas",
+    "googleMapsUrl": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
   },
-  "home": {
-    "title": "Medicina familiar con cercanía humana",
-    "subtitle": "Agenda tu consulta para evaluación, tratamiento y plan de seguimiento.",
-    "ctaLabel": "Ver política de privacidad",
-    "ctaHref": "/privacy"
+  "hours": {
+    "daysLabel": "Martes y Jueves",
+    "timeLabel": "4:00-6:00 pm"
   },
-  "privacy": {
-    "title": "Política de privacidad",
-    "updatedAt": "15 de febrero de 2026",
-    "sections": [
+  "nav": {
+    "items": [
       {
-        "heading": "Datos que recopilamos",
-        "body": "Recopilamos únicamente los datos necesarios para brindar servicios médicos y administrativos."
+        "label": "Inicio",
+        "href": "/"
       },
       {
-        "heading": "Uso de la información",
-        "body": "La información se utiliza para gestión de citas, seguimiento clínico y comunicación relacionada con tu atención."
-      },
-      {
-        "heading": "Contacto",
-        "body": "Para consultas sobre privacidad, comunícate mediante los canales oficiales del consultorio."
+        "label": "Privacidad",
+        "href": "/privacy"
       }
     ]
   },
-  "footer": {
-    "legalLine": "Todos los derechos reservados."
+  "ctas": {
+    "primaryLabel": "Enviar WhatsApp",
+    "primaryHref": "https://wa.me/529616061492",
+    "secondaryLabel": "Ver politica de privacidad",
+    "secondaryHref": "/privacy"
+  },
+  "hero": {
+    "headline": "Medicina General y Ultrasonido Diagnostico en Cintalapa",
+    "subheadline": "Atencion medica enfocada en diagnostico oportuno, seguimiento y estudios por ultrasonido.",
+    "imageKey": "consultorio",
+    "imageAlt": "Consulta medica en consultorio"
+  },
+  "trustBar": {
+    "items": [
+      "Dr. Luis Alberto Pena Molina",
+      "Martes y Jueves 4:00-6:00 pm",
+      "Cintalapa, Chiapas"
+    ]
+  },
+  "services": {
+    "title": "Servicios",
+    "generalMedicine": {
+      "title": "Medicina General",
+      "items": [
+        "Consulta de primera vez",
+        "Consulta de seguimiento",
+        "Valoracion clinica integral",
+        "Control de padecimientos comunes"
+      ],
+      "note": "Los estudios y tratamientos se indican segun valoracion medica."
+    },
+    "ultrasound": {
+      "title": "Ultrasonido Diagnostico",
+      "categories": [
+        {
+          "title": "Tejidos y glandulas",
+          "items": ["Tiroides", "Mama", "Tejidos blandos"]
+        },
+        {
+          "title": "Abdomen",
+          "items": [
+            "Higado y via biliar",
+            "Renal",
+            "Pancreas",
+            "Bazo",
+            "Vejiga"
+          ]
+        },
+        {
+          "title": "Ginecologia y obstetricia",
+          "items": ["Utero y anexos", "Obstetrico"]
+        },
+        {
+          "title": "Urologia",
+          "items": ["Prostata", "Renal"]
+        }
+      ]
+    }
+  },
+  "clinicGallery": {
+    "title": "Instalaciones del consultorio",
+    "subtitle": "Espacios orientados a una atencion medica clara y ordenada.",
+    "images": [
+      {
+        "imageKey": "consultorio",
+        "alt": "Area principal del consultorio",
+        "caption": "Consultorio para valoracion y seguimiento"
+      },
+      {
+        "imageKey": "equipoMedico",
+        "alt": "Equipo medico para estudios de ultrasonido",
+        "caption": "Equipo para ultrasonido diagnostico"
+      },
+      {
+        "imageKey": "doctor",
+        "alt": "Dr. Luis Alberto Pena Molina en consulta",
+        "caption": "Atencion personalizada durante la consulta"
+      }
+    ]
+  },
+  "aboutDoctor": {
+    "title": "Sobre el doctor",
+    "imageKey": "doctor",
+    "imageAlt": "Retrato del Dr. Luis Alberto Pena Molina",
+    "bio": [
+      "Dr. Luis Alberto Pena Molina brinda consulta de medicina general con seguimiento clinico individualizado.",
+      "Integra ultrasonido diagnostico para apoyar decisiones medicas con evaluacion oportuna.",
+      "Atiende en Cintalapa, Chiapas, en horario de Martes y Jueves de 4:00 a 6:00 pm."
+    ]
+  },
+  "process": {
+    "title": "Proceso de atencion",
+    "steps": [
+      {
+        "title": "1. Contacto inicial",
+        "description": "Envia un mensaje por WhatsApp para indicar tu motivo de consulta y disponibilidad."
+      },
+      {
+        "title": "2. Valoracion medica",
+        "description": "Se realiza interrogatorio y exploracion para establecer el plan de atencion."
+      },
+      {
+        "title": "3. Seguimiento",
+        "description": "Se da continuidad clinica y, si aplica, control con estudio de ultrasonido diagnostico."
+      }
+    ]
+  },
+  "locationHours": {
+    "title": "Ubicacion y horarios",
+    "subtitle": "Consulta la direccion del consultorio y agenda en horarios disponibles.",
+    "actions": [
+      {
+        "label": "Abrir en Google Maps",
+        "href": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas",
+        "variant": "secondary"
+      },
+      {
+        "label": "Llamar al consultorio",
+        "href": "tel:9616061492",
+        "variant": "primary"
+      },
+      {
+        "label": "Enviar WhatsApp",
+        "href": "https://wa.me/529616061492",
+        "variant": "whatsapp"
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Agenda tu atencion por WhatsApp",
+    "description": "Comparte tu motivo de consulta para orientarte y coordinar tu cita.",
+    "buttonLabel": "Enviar WhatsApp",
+    "buttonHref": "https://wa.me/529616061492"
+  },
+  "sections": {
+    "showProcess": true,
+    "showClinicGallery": true,
+    "showFAQ": true
+  },
+  "faq": [
+    {
+      "q": "Se requiere cita previa?",
+      "a": "Se recomienda agendar para optimizar tiempos de atencion."
+    },
+    {
+      "q": "Puedo solicitar ultrasonido el mismo dia?",
+      "a": "La disponibilidad depende de agenda y tipo de estudio requerido."
+    }
+  ],
+  "privacy": {
+    "title": "Politica de privacidad",
+    "body": [
+      "La informacion proporcionada por pacientes se utiliza exclusivamente para atencion medica, seguimiento clinico y gestion administrativa del consultorio.",
+      "Los datos personales se resguardan con medidas razonables de seguridad y no se comparten con terceros sin autorizacion, salvo requerimiento legal aplicable.",
+      "Para dudas sobre privacidad o actualizacion de datos, puedes comunicarte por telefono o WhatsApp en los canales oficiales del consultorio."
+    ]
   },
   "analytics": {
     "enabled": false,

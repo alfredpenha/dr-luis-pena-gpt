@@ -1,0 +1,78 @@
+---
+import Container from "@/components/ui/Container.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import Button from "@/components/ui/Button.astro";
+import { site } from "@/lib/content";
+---
+
+<section class="bg-white py-14 sm:py-20">
+  <Container>
+    <div class="grid gap-8 lg:grid-cols-2">
+      <div>
+        <SectionTitle
+          title={site.locationHours.title}
+          subtitle={site.locationHours.subtitle}
+        />
+        <div class="mt-6 space-y-3">
+          <p
+            class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"
+          >
+            {site.contact.address}
+          </p>
+          <p
+            class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"
+          >
+            {site.contact.city}, {site.contact.state}
+          </p>
+          <p
+            class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"
+          >
+            {site.hours.daysLabel} · {site.hours.timeLabel}
+          </p>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          {
+            site.locationHours.actions.map((action) => (
+              <Button
+                href={action.href}
+                variant={action.variant}
+                ariaLabel={action.label}
+              >
+                {action.label}
+              </Button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div
+        class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm"
+      >
+        {
+          site.locationHours.mapEmbedUrl ? (
+            <iframe
+              src={site.locationHours.mapEmbedUrl}
+              title={site.locationHours.title}
+              class="h-[320px] w-full md:h-full"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            />
+          ) : (
+            <div class="flex h-[320px] items-center justify-center p-6 md:h-full">
+              <Button
+                href={
+                  site.contact.googleMapsUrl ??
+                  site.locationHours.actions[0].href
+                }
+                variant="secondary"
+                ariaLabel={site.locationHours.actions[0].label}
+              >
+                {site.locationHours.actions[0].label}
+              </Button>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </Container>
+</section>
