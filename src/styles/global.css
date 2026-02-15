@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -8,25 +8,43 @@
   }
 
   html {
-    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    @apply m-0 bg-slate-50 text-slate-900;
+    @apply m-0 bg-slate-50 text-text;
+    line-height: 1.625;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply text-slate-900;
+  h1 {
+    @apply text-[30px] font-bold leading-[1.2] tracking-tight text-text md:text-[36px];
+  }
+
+  h2 {
+    @apply text-[28px] font-bold leading-[1.286] tracking-tight text-text;
+  }
+
+  h3 {
+    @apply text-[20px] font-semibold leading-[1.4] text-text;
   }
 
   p {
-    @apply leading-relaxed text-slate-700;
+    @apply text-base leading-[1.625] text-text-secondary;
+  }
+
+  small {
+    @apply text-sm leading-[1.571] text-muted-600;
   }
 
   a {
-    @apply underline-offset-4;
+    @apply text-primary-700 no-underline transition-colors hover:text-primary-800;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.primary.700");
+    outline-offset: 2px;
   }
 }

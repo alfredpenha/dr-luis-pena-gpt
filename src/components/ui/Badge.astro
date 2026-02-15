@@ -1,0 +1,25 @@
+﻿---
+type Variant = "neutral" | "outline";
+
+interface Props {
+  variant?: Variant;
+  class?: string;
+}
+
+const { variant = "neutral", class: className } = Astro.props;
+
+const variantClassByName: Record<Variant, string> = {
+  neutral: "bg-slate-100 text-muted-700 border border-slate-200",
+  outline: "bg-white text-muted-700 border border-slate-300",
+};
+---
+
+<span
+  class:list={[
+    "inline-flex min-h-11 items-center rounded-full px-4 text-sm font-medium leading-[22px]",
+    variantClassByName[variant],
+    className,
+  ]}
+>
+  <slot />
+</span>

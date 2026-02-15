@@ -1,11 +1,13 @@
 ---
 type Variant = "primary" | "secondary" | "whatsapp";
+type Size = "sm" | "md" | "lg";
 import { withBase } from "@/lib/urls";
 
 interface Props {
   href?: string;
   type?: "button" | "submit" | "reset";
   variant?: Variant;
+  size?: Size;
   class?: string;
   ariaLabel?: string;
   trackEvent?: "click_whatsapp" | "click_maps" | "click_call";
@@ -16,6 +18,7 @@ const {
   href,
   type = "button",
   variant = "primary",
+  size = "md",
   class: className,
   ariaLabel,
   trackEvent,
@@ -23,18 +26,24 @@ const {
 } = Astro.props;
 
 const baseClass =
-  "inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  "inline-flex min-h-11 items-center justify-center rounded-card font-semibold transition-colors duration-150 active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+
+const sizeClassByName: Record<Size, string> = {
+  sm: "px-4 text-sm leading-[22px]",
+  md: "px-5 text-sm leading-[22px]",
+  lg: "px-6 text-base leading-[26px]",
+};
 
 const variantClassByName: Record<Variant, string> = {
   primary:
-    "bg-blue-700 text-white hover:bg-blue-800 focus-visible:outline-blue-700",
+    "bg-primary-700 text-white hover:bg-primary-800 active:bg-primary-800 focus-visible:outline-primary-700",
   secondary:
-    "border border-blue-200 bg-white text-blue-800 hover:bg-blue-50 focus-visible:outline-blue-700",
+    "border border-primary-100 bg-surface text-primary-700 hover:bg-primary-50 active:bg-primary-100 focus-visible:outline-primary-700",
   whatsapp:
-    "bg-green-600 text-white hover:bg-green-700 focus-visible:outline-green-700",
+    "bg-green-600 text-white hover:bg-green-700 active:bg-green-700 focus-visible:outline-green-700",
 };
 
-const classes = `${baseClass} ${variantClassByName[variant]} ${className ?? ""}`;
+const classes = `${baseClass} ${sizeClassByName[size]} ${variantClassByName[variant]} ${className ?? ""}`;
 const resolvedHref = href ? withBase(href) : undefined;
 ---
 

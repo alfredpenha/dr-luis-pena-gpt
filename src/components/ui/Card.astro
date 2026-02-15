@@ -1,0 +1,26 @@
+﻿---
+interface Props {
+  class?: string;
+  padding?: "sm" | "md" | "lg";
+  elevated?: boolean;
+}
+
+const { class: className, padding = "md", elevated = true } = Astro.props;
+
+const paddingClassByName: Record<"sm" | "md" | "lg", string> = {
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8",
+};
+---
+
+<article
+  class:list={[
+    "rounded-card border border-slate-200 bg-surface",
+    elevated ? "shadow-card" : "",
+    paddingClassByName[padding],
+    className,
+  ]}
+>
+  <slot />
+</article>
