@@ -2,23 +2,30 @@
   "meta": {
     "siteName": "Consultorio del Dr. Luis Alberto Pena Molina",
     "title": "Medicina General y Ultrasonido Diagnostico",
-    "description": "Atencion medica en consulta externa con enfoque clinico y ultrasonido diagnostico.",
+    "description": "Atencion medica local con enfoque clinico y ultrasonido diagnostico.",
     "locale": "es-MX",
     "baseUrl": "https://example.github.io/dr-luis-pena-gpt",
     "ogImage": "/images/doctor.jpeg"
+  },
+  "brand": {
+    "clinicName": "Consultorio Medico Cintalapa",
+    "lockupText": "Dr. Luis Alberto Pena Molina",
+    "tagline": "Atencion cercana con respaldo clinico"
   },
   "doctor": {
     "fullName": "Dr. Luis Alberto Pena Molina",
     "credentialId": "Cedula profesional: pendiente",
     "specialties": ["Medicina General", "Ultrasonido Diagnostico"],
-    "shortBio": "Atencion clinica enfocada en prevencion, diagnostico oportuno y seguimiento del paciente."
+    "shortBio": "Consulta medica con seguimiento personalizado y apoyo diagnostico por ultrasonido."
   },
   "contact": {
     "phone": "9616061492",
     "whatsapp": "9616061492",
-    "address": "Direccion de consultorio pendiente",
+    "addressLine": "Consultorio medico, Cintalapa",
     "city": "Cintalapa",
     "state": "Chiapas",
+    "mapsUrl": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas",
+    "address": "Consultorio medico, Cintalapa",
     "country": "MX",
     "googleMapsUrl": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
   },
@@ -46,16 +53,61 @@
     "secondaryHref": "/privacy"
   },
   "hero": {
+    "eyebrow": "Medico local en Cintalapa",
+    "h1": "Medicina General y Ultrasonido Diagnostico",
+    "subheadline": "Atencion clara, cercana y con criterio clinico.",
+    "description": "Agenda por WhatsApp para valoracion medica y seguimiento oportuno.",
+    "ctas": {
+      "primary": {
+        "label": "Enviar WhatsApp",
+        "href": "https://wa.me/529616061492"
+      },
+      "secondary": {
+        "label": "Ver ubicacion",
+        "href": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
+      }
+    },
+    "image": {
+      "srcKey": "doctor",
+      "alt": "Dr. Luis Alberto Pena Molina en consultorio"
+    },
     "headline": "Medicina General y Ultrasonido Diagnostico en Cintalapa",
-    "subheadline": "Atencion medica enfocada en diagnostico oportuno, seguimiento y estudios por ultrasonido.",
-    "imageKey": "consultorio",
-    "imageAlt": "Consulta medica en consultorio"
+    "imageKey": "doctor",
+    "imageAlt": "Dr. Luis Alberto Pena Molina en consultorio"
+  },
+  "trust": {
+    "items": [
+      {
+        "title": "Atencion medica local",
+        "subtitle": "Cintalapa, Chiapas",
+        "iconKey": "location"
+      },
+      {
+        "title": "Horario fijo",
+        "subtitle": "Martes y Jueves 4:00-6:00 pm",
+        "iconKey": "clock"
+      },
+      {
+        "title": "Contacto directo",
+        "subtitle": "Respuesta por WhatsApp",
+        "iconKey": "message"
+      }
+    ]
   },
   "trustBar": {
     "items": [
       "Dr. Luis Alberto Pena Molina",
       "Martes y Jueves 4:00-6:00 pm",
       "Cintalapa, Chiapas"
+    ]
+  },
+  "valueProp": {
+    "title": "Atencion medica enfocada en resolver",
+    "bullets": [
+      "Consulta de medicina general para primera vez y seguimiento.",
+      "Atencion en Cintalapa, Chiapas, con trato cercano.",
+      "Horario de consulta: Martes y Jueves de 4:00 a 6:00 pm.",
+      "Agenda rapido por WhatsApp para coordinar tu cita."
     ]
   },
   "services": {
@@ -166,6 +218,23 @@
         "variant": "whatsapp"
       }
     ]
+  },
+  "footer": {
+    "quickLinks": [
+      {
+        "label": "Inicio",
+        "href": "/"
+      },
+      {
+        "label": "Privacidad",
+        "href": "/privacy"
+      },
+      {
+        "label": "Abrir en Google Maps",
+        "href": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
+      }
+    ],
+    "note": "Atencion con cita previa y seguimiento clinico."
   },
   "finalCta": {
     "title": "Agenda tu atencion por WhatsApp",
