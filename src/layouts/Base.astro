@@ -1,6 +1,6 @@
 ---
 import "@/styles/global.css";
-import Analytics from "@/components/analytics/Analytics.astro";
+import GA4 from "@/components/analytics/GA4.astro";
 import { site } from "@/lib/content";
 
 interface Props {
@@ -11,9 +11,36 @@ interface Props {
 const { title, description } = Astro.props;
 const pageTitle = title ?? site.meta.title;
 const pageDescription = description ?? site.meta.description;
-const canonical = site.meta.baseUrl
-  ? new URL(Astro.url.pathname, site.meta.baseUrl).toString()
-  : Astro.url.toString();
+const siteOrigin = import.meta.env.SITE
+  ? new URL(import.meta.env.SITE).origin
+  : new URL(site.meta.baseUrl ?? Astro.url.origin).origin;
+const basePath = import.meta.env.BASE_URL ?? "/";
+const canonicalBase = new URL(basePath, siteOrigin)
+  .toString()
+  .replace(/\/$/, "");
+const canonical = new URL(Astro.url.pathname, canonicalBase).toString();
+const ogImageUrl = site.meta.ogImage
+  ? new URL(site.meta.ogImage, canonicalBase).toString()
+  : undefined;
+const twitterCardType = ogImageUrl ? "summary_large_image" : "summary";
+
+const physicianSchema = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: site.doctor.fullName,
+  url: canonicalBase,
+  description: site.doctor.shortBio,
+  telephone: site.contact.phone,
+  medicalSpecialty: site.doctor.specialties,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.contact.address,
+    addressLocality: site.contact.city,
+    addressRegion: site.contact.state,
+    addressCountry: site.contact.country,
+  },
+  ...(site.hours.openingHours ? { openingHours: site.hours.openingHours } : {}),
+};
 ---
 
 <!doctype html>
@@ -23,11 +50,24 @@ const canonical = site.meta.baseUrl
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <link rel="canonical" href={canonical} />
+    <meta property="og:site_name" content={site.meta.siteName} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+
+    <meta name="twitter:card" content={twitterCardType} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(physicianSchema)}
+    />
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased">
     <main>
@@ -38,9 +78,26 @@ const canonical = site.meta.baseUrl
         class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 p-6 text-sm text-slate-700"
       >
         <p>{site.doctor.fullName}</p>
-        <p>{site.contact.phone}</p>
+        <div class="flex items-center gap-4">
+          <a
+            href={`tel:${site.contact.phone}`}
+            data-track-event="click_call"
+            data-track-source="footer"
+            class="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+          >
+            {site.contact.phone}
+          </a>
+          <a
+            href={site.ctas.primaryHref}
+            data-track-event="click_whatsapp"
+            data-track-source="footer"
+            class="text-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+          >
+            {site.ctas.primaryLabel}
+          </a>
+        </div>
       </div>
     </footer>
-    <Analytics />
+    <GA4 />
   </body>
 </html>

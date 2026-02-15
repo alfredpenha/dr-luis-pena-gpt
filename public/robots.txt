@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://example.github.io/dr-luis-pena-gpt/sitemap-index.xml

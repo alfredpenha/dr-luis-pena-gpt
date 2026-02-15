@@ -40,6 +40,7 @@ export const siteSchema = z
       description: z.string().min(1),
       locale: z.string().min(2),
       baseUrl: z.string().url().optional(),
+      ogImage: z.string().min(1).optional(),
     }),
     doctor: z.object({
       fullName: z.string().min(1),
@@ -53,11 +54,13 @@ export const siteSchema = z
       address: z.string().min(1),
       city: z.string().min(1),
       state: z.string().min(1),
+      country: z.string().min(1),
       googleMapsUrl: z.string().url().optional(),
     }),
     hours: z.object({
       daysLabel: z.string().min(1),
       timeLabel: z.string().min(1),
+      openingHours: z.array(z.string().min(1)).optional(),
     }),
     nav: z.object({
       items: z.array(navItemSchema).min(1),

@@ -4,7 +4,8 @@
     "title": "Medicina General y Ultrasonido Diagnostico",
     "description": "Atencion medica en consulta externa con enfoque clinico y ultrasonido diagnostico.",
     "locale": "es-MX",
-    "baseUrl": "https://example.github.io/dr-luis-pena-gpt"
+    "baseUrl": "https://example.github.io/dr-luis-pena-gpt",
+    "ogImage": "/images/doctor.jpeg"
   },
   "doctor": {
     "fullName": "Dr. Luis Alberto Pena Molina",
@@ -18,11 +19,13 @@
     "address": "Direccion de consultorio pendiente",
     "city": "Cintalapa",
     "state": "Chiapas",
+    "country": "MX",
     "googleMapsUrl": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
   },
   "hours": {
     "daysLabel": "Martes y Jueves",
-    "timeLabel": "4:00-6:00 pm"
+    "timeLabel": "4:00-6:00 pm",
+    "openingHours": ["Tu 16:00-18:00", "Th 16:00-18:00"]
   },
   "nav": {
     "items": [

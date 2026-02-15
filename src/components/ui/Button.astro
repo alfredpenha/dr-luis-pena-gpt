@@ -1,5 +1,6 @@
 ---
 type Variant = "primary" | "secondary" | "whatsapp";
+import { withBase } from "@/lib/urls";
 
 interface Props {
   href?: string;
@@ -7,6 +8,8 @@ interface Props {
   variant?: Variant;
   class?: string;
   ariaLabel?: string;
+  trackEvent?: "click_whatsapp" | "click_maps" | "click_call";
+  trackSource?: "header" | "hero" | "location" | "footer";
 }
 
 const {
@@ -15,6 +18,8 @@ const {
   variant = "primary",
   class: className,
   ariaLabel,
+  trackEvent,
+  trackSource,
 } = Astro.props;
 
 const baseClass =
@@ -30,15 +35,28 @@ const variantClassByName: Record<Variant, string> = {
 };
 
 const classes = `${baseClass} ${variantClassByName[variant]} ${className ?? ""}`;
+const resolvedHref = href ? withBase(href) : undefined;
 ---
 
 {
-  href ? (
-    <a href={href} class={classes} aria-label={ariaLabel}>
+  resolvedHref ? (
+    <a
+      href={resolvedHref}
+      class={classes}
+      aria-label={ariaLabel}
+      data-track-event={trackEvent}
+      data-track-source={trackSource}
+    >
       <slot />
     </a>
   ) : (
-    <button type={type} class={classes} aria-label={ariaLabel}>
+    <button
+      type={type}
+      class={classes}
+      aria-label={ariaLabel}
+      data-track-event={trackEvent}
+      data-track-source={trackSource}
+    >
       <slot />
     </button>
   )

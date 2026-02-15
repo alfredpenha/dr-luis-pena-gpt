@@ -2,6 +2,7 @@
 import Container from "@/components/ui/Container.astro";
 import Button from "@/components/ui/Button.astro";
 import { site } from "@/lib/content";
+import { withBase } from "@/lib/urls";
 ---
 
 <header
@@ -13,7 +14,7 @@ import { site } from "@/lib/content";
       aria-label={site.meta.siteName}
     >
       <a
-        href="/"
+        href={withBase("/")}
         class="text-base font-semibold text-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
       >
         {site.meta.siteName}
@@ -22,7 +23,7 @@ import { site } from "@/lib/content";
         {
           site.nav.items.map((item) => (
             <a
-              href={item.href}
+              href={withBase(item.href)}
               class="text-sm font-medium text-slate-700 transition hover:text-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
             >
               {item.label}
@@ -34,6 +35,8 @@ import { site } from "@/lib/content";
         href={site.ctas.primaryHref}
         variant="whatsapp"
         ariaLabel={site.ctas.primaryLabel}
+        trackEvent="click_whatsapp"
+        trackSource="header"
       >
         {site.ctas.primaryLabel}
       </Button>

@@ -3,6 +3,26 @@ import Container from "@/components/ui/Container.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import Button from "@/components/ui/Button.astro";
 import { site } from "@/lib/content";
+
+function getTrackEvent(
+  href: string,
+): "click_whatsapp" | "click_maps" | "click_call" | undefined {
+  const normalized = href.toLowerCase();
+  if (normalized.includes("wa.me") || normalized.includes("whatsapp")) {
+    return "click_whatsapp";
+  }
+  if (normalized.startsWith("tel:")) {
+    return "click_call";
+  }
+  if (
+    normalized.includes("google.com/maps") ||
+    normalized.includes("maps.google.com")
+  ) {
+    return "click_maps";
+  }
+
+  return undefined;
+}
 ---
 
 <section class="bg-white py-14 sm:py-20">
@@ -37,6 +57,8 @@ import { site } from "@/lib/content";
                 href={action.href}
                 variant={action.variant}
                 ariaLabel={action.label}
+                trackEvent={getTrackEvent(action.href)}
+                trackSource="location"
               >
                 {action.label}
               </Button>
@@ -66,6 +88,8 @@ import { site } from "@/lib/content";
                 }
                 variant="secondary"
                 ariaLabel={site.locationHours.actions[0].label}
+                trackEvent="click_maps"
+                trackSource="location"
               >
                 {site.locationHours.actions[0].label}
               </Button>
