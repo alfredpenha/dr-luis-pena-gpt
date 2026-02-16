@@ -5,6 +5,8 @@ import { withBase } from "@/lib/urls";
 
 interface Props {
   href?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  rel?: string;
   type?: "button" | "submit" | "reset";
   variant?: Variant;
   size?: Size;
@@ -16,6 +18,8 @@ interface Props {
 
 const {
   href,
+  target,
+  rel,
   type = "button",
   variant = "primary",
   size = "md",
@@ -26,7 +30,7 @@ const {
 } = Astro.props;
 
 const baseClass =
-  "inline-flex min-h-11 items-center justify-center rounded-card font-sans font-semibold transition-colors duration-150 active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  "ui-button inline-flex min-h-11 items-center justify-center rounded-card font-sans font-semibold no-underline hover:no-underline transition-colors duration-150 active:translate-y-px focus-visible:ring-2 focus-visible:ring-offset-2";
 
 const sizeClassByName: Record<Size, string> = {
   sm: "px-4 text-sm leading-[22px]",
@@ -36,11 +40,11 @@ const sizeClassByName: Record<Size, string> = {
 
 const variantClassByName: Record<Variant, string> = {
   primary:
-    "bg-primary-700 text-white hover:bg-primary-800 active:bg-primary-800 focus-visible:outline-primary-700",
+    "bg-primary !text-white hover:bg-primary-dark hover:!text-white active:bg-primary-darker active:!text-white focus-visible:ring-primary",
   secondary:
-    "border border-primary-100 bg-surface text-primary-700 hover:bg-primary-50 active:bg-primary-100 focus-visible:outline-primary-700",
+    "border border-border bg-surface text-primary hover:bg-muted-subtle active:bg-muted-subtle focus-visible:ring-primary",
   whatsapp:
-    "bg-green-700 text-white hover:bg-green-800 active:bg-green-800 focus-visible:outline-green-800",
+    "bg-whatsapp !text-white hover:bg-whatsapp-dark hover:!text-white active:bg-whatsapp-darker active:!text-white focus-visible:ring-whatsapp",
 };
 
 const classes = `${baseClass} ${sizeClassByName[size]} ${variantClassByName[variant]} ${className ?? ""}`;
@@ -51,6 +55,8 @@ const resolvedHref = href ? withBase(href) : undefined;
   resolvedHref ? (
     <a
       href={resolvedHref}
+      target={target}
+      rel={rel}
       class={classes}
       aria-label={ariaLabel}
       data-track-event={trackEvent}

@@ -2,7 +2,9 @@
 import Container from "@/components/ui/Container.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import Button from "@/components/ui/Button.astro";
+import MapPreview from "@/components/ui/MapPreview.astro";
 import { site } from "@/lib/content";
+import { getGoogleStaticMapUrl } from "@/lib/maps";
 
 function getTrackEvent(
   href: string,
@@ -23,9 +25,23 @@ function getTrackEvent(
 
   return undefined;
 }
+
+const mapsAction =
+  site.locationHours.actions.find(
+    (action) => getTrackEvent(action.href) === "click_maps",
+  ) ?? {
+    label: "Abrir en Google Maps",
+    href: site.contact.googleMapsUrl ?? site.contact.mapsUrl,
+    variant: "secondary" as const,
+  };
+
+const staticMapUrl =
+  site.maps.provider === "google" && site.maps.static.enabled
+    ? getGoogleStaticMapUrl(site.maps.static)
+    : null;
 ---
 
-<section id="ubicacion" class="bg-white py-14 sm:py-20">
+<section id="ubicacion" class="bg-surface-elevated py-14 sm:py-20">
   <Container>
     <div class="grid gap-8 lg:grid-cols-2">
       <div>
@@ -35,17 +51,17 @@ function getTrackEvent(
         />
         <div class="mt-6 space-y-3">
           <p
-            class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-secondary text-slate-500"
+            class="rounded-lg border border-border bg-muted px-4 py-3 text-secondary text-text-muted"
           >
-            {site.contact.address}
+            {site.contact.addressLine}
           </p>
           <p
-            class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-secondary text-slate-500"
+            class="rounded-lg border border-border bg-muted px-4 py-3 text-secondary text-text-muted"
           >
             {site.contact.city}, {site.contact.state}
           </p>
           <p
-            class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-secondary text-slate-500"
+            class="rounded-lg border border-border bg-muted px-4 py-3 text-secondary text-text-muted"
           >
             {site.hours.daysLabel} &middot; {site.hours.timeLabel}
           </p>
@@ -67,36 +83,11 @@ function getTrackEvent(
         </div>
       </div>
 
-      <div
-        class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm"
-      >
-        {
-          site.locationHours.mapEmbedUrl ? (
-            <iframe
-              src={site.locationHours.mapEmbedUrl}
-              title={site.locationHours.title}
-              class="h-[320px] w-full md:h-full"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            />
-          ) : (
-            <div class="flex h-[320px] items-center justify-center p-6 md:h-full">
-              <Button
-                href={
-                  site.contact.googleMapsUrl ??
-                  site.locationHours.actions[0].href
-                }
-                variant="secondary"
-                ariaLabel={site.locationHours.actions[0].label}
-                trackEvent="click_maps"
-                trackSource="location"
-              >
-                {site.locationHours.actions[0].label}
-              </Button>
-            </div>
-          )
-        }
-      </div>
+      <MapPreview
+        mapsUrl={mapsAction.href}
+        staticMapUrl={staticMapUrl}
+        alt={`Mapa del consultorio en ${site.contact.addressLine}, ${site.contact.city}, ${site.contact.state}`}
+      />
     </div>
   </Container>
 </section>

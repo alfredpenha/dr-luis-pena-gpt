@@ -15,7 +15,7 @@ const doctorPicture = getPictureProps(
 ---
 
 <section
-  class="bg-texture bg-white py-14 sm:py-20"
+  class="bg-texture bg-surface-elevated py-14 sm:py-20"
   style={`--texture-image: url('${withBase("/images/background-2.png")}'); --texture-opacity: 0.07;`}
 >
   <Container>
@@ -23,7 +23,7 @@ const doctorPicture = getPictureProps(
       <div class="lg:col-span-2">
         <Picture
           {...doctorPicture}
-          class="size-full rounded-2xl border border-slate-200 object-cover shadow-sm"
+          class="size-full rounded-2xl border border-border object-cover shadow-sm"
         />
       </div>
       <div class="lg:col-span-3">
@@ -43,7 +43,7 @@ const doctorPicture = getPictureProps(
         <div class="mt-6 space-y-5">
           {
             site.aboutDoctor.bio.map((paragraph) => (
-              <p class="font-sans text-body text-slate-600">{paragraph}</p>
+              <p class="font-sans text-body text-text-muted">{paragraph}</p>
             ))
           }
         </div>

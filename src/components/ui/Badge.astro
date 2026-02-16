@@ -9,8 +9,8 @@ interface Props {
 const { variant = "neutral", class: className } = Astro.props;
 
 const variantClassByName: Record<Variant, string> = {
-  neutral: "bg-slate-100 text-muted-700 border border-slate-200",
-  outline: "bg-white text-muted-700 border border-slate-300",
+  neutral: "border border-border bg-muted-subtle text-text-muted",
+  outline: "border border-border-strong bg-surface-elevated text-text-muted",
 };
 ---
 

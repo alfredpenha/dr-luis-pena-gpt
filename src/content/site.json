@@ -14,44 +14,44 @@
   },
   "doctor": {
     "fullName": "Dr. Luis Alberto Peña Molina",
-    "credentialId": "Cédula profesional disponible en consulta.",
+    "credentialId": "Cédula profesional: 11852159.",
     "specialties": ["Medicina General", "Ultrasonido Diagnóstico"],
     "shortBio": "Consulta médica con seguimiento personalizado y apoyo diagnóstico por ultrasonido."
   },
   "contact": {
     "phone": "9616061492",
     "whatsapp": "9616061492",
-    "addressLine": "Consultorio médico, Cintalapa",
+    "addressLine": "5 Av. Sur Pte. 350, Central, 30400",
     "city": "Cintalapa",
     "state": "Chiapas",
-    "mapsUrl": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas",
-    "address": "Consultorio médico, Cintalapa",
+    "mapsUrl": "https://www.google.com/maps?q=5+Av.+Sur+Pte.+350,+Central,+30400,+Cintalapa,+Chiapas",
+    "address": "5 Av. Sur Pte. 350, Central, 30400",
     "country": "MX",
-    "googleMapsUrl": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
+    "googleMapsUrl": "https://www.google.com/maps?q=5+Av.+Sur+Pte.+350,+Central,+30400,+Cintalapa,+Chiapas"
   },
   "hours": {
     "daysLabel": "Martes y jueves",
     "timeLabel": "4:00-6:00 p. m.",
     "openingHours": ["Tu 16:00-18:00", "Th 16:00-18:00"]
   },
+  "maps": {
+    "provider": "google",
+    "static": {
+      "enabled": true,
+      "centerQuery": "5 Av. Sur Pte. 350, Central, 30400, Cintalapa, Chiapas",
+      "zoom": 16,
+      "size": "640x420",
+      "scale": 2,
+      "maptype": "roadmap",
+      "markerColor": "0x163A59"
+    }
+  },
   "nav": {
     "items": [
-      {
-        "label": "Inicio",
-        "href": "/"
-      },
-      {
-        "label": "Servicios",
-        "href": "/#servicios"
-      },
-      {
-        "label": "Ubicación",
-        "href": "/#ubicacion"
-      },
-      {
-        "label": "Privacidad",
-        "href": "/privacy"
-      }
+      { "label": "Inicio", "href": "/" },
+      { "label": "Servicios", "href": "/#servicios" },
+      { "label": "Ubicación", "href": "/#ubicacion" },
+      { "label": "Privacidad", "href": "/privacy" }
     ]
   },
   "ctas": {
@@ -66,14 +66,8 @@
     "subheadline": "Atención clara, cercana y con criterio clínico.",
     "description": "Agenda por WhatsApp para valoración médica y seguimiento oportuno.",
     "ctas": {
-      "primary": {
-        "label": "Enviar WhatsApp",
-        "href": "https://wa.me/529616061492"
-      },
-      "secondary": {
-        "label": "Ver ubicación",
-        "href": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
-      }
+      "primary": { "label": "Enviar WhatsApp", "href": "https://wa.me/529616061492" },
+      "secondary": { "label": "Ver ubicación", "href": "https://www.google.com/maps?q=5+Av.+Sur+Pte.+350,+Central,+30400,+Cintalapa,+Chiapas" }
     },
     "image": {
       "srcKey": "doctor",
@@ -85,21 +79,9 @@
   },
   "trust": {
     "items": [
-      {
-        "title": "Atención médica local",
-        "subtitle": "Cintalapa, Chiapas",
-        "iconKey": "location"
-      },
-      {
-        "title": "Horario fijo",
-        "subtitle": "Martes y jueves, 4:00-6:00 p. m.",
-        "iconKey": "clock"
-      },
-      {
-        "title": "Contacto directo",
-        "subtitle": "Respuesta por WhatsApp",
-        "iconKey": "message"
-      }
+      { "title": "Atención médica local", "subtitle": "Cintalapa, Chiapas", "iconKey": "location" },
+      { "title": "Horario fijo", "subtitle": "Martes y jueves, 4:00-6:00 p. m.", "iconKey": "clock" },
+      { "title": "Contacto directo", "subtitle": "Respuesta por WhatsApp", "iconKey": "message" }
     ]
   },
   "trustBar": {
@@ -133,28 +115,10 @@
     "ultrasound": {
       "title": "Ultrasonido diagnóstico",
       "categories": [
-        {
-          "title": "Tejidos y glándulas",
-          "items": ["Tiroides", "Mama", "Tejidos blandos"]
-        },
-        {
-          "title": "Abdomen",
-          "items": [
-            "Hígado y vía biliar",
-            "Renal",
-            "Páncreas",
-            "Bazo",
-            "Vejiga"
-          ]
-        },
-        {
-          "title": "Ginecología y obstetricia",
-          "items": ["Útero y anexos", "Obstétrico"]
-        },
-        {
-          "title": "Urología",
-          "items": ["Próstata", "Renal"]
-        }
+        { "title": "Tejidos y glándulas", "items": ["Tiroides", "Mama", "Tejidos blandos"] },
+        { "title": "Abdomen", "items": ["Hígado y vía biliar", "Renal", "Páncreas", "Bazo", "Vejiga"] },
+        { "title": "Ginecología y obstetricia", "items": ["Útero y anexos", "Obstétrico"] },
+        { "title": "Urología", "items": ["Próstata", "Renal"] }
       ]
     }
   },
@@ -208,7 +172,7 @@
     "actions": [
       {
         "label": "Abrir en Google Maps",
-        "href": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas",
+        "href": "https://www.google.com/maps?q=5+Av.+Sur+Pte.+350,+Central,+30400,+Cintalapa,+Chiapas",
         "variant": "secondary"
       },
       {
@@ -225,17 +189,11 @@
   },
   "footer": {
     "quickLinks": [
-      {
-        "label": "Inicio",
-        "href": "/"
-      },
-      {
-        "label": "Privacidad",
-        "href": "/privacy"
-      },
+      { "label": "Inicio", "href": "/" },
+      { "label": "Privacidad", "href": "/privacy" },
       {
         "label": "Abrir en Google Maps",
-        "href": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
+        "href": "https://www.google.com/maps?q=5+Av.+Sur+Pte.+350,+Central,+30400,+Cintalapa,+Chiapas"
       }
     ],
     "note": "Atención con cita previa y seguimiento clínico."
