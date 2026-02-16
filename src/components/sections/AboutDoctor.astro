@@ -2,8 +2,10 @@
 import { Picture } from "astro:assets";
 import Container from "@/components/ui/Container.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
+import Badge from "@/components/ui/Badge.astro";
 import { site } from "@/lib/content";
 import { getPictureProps } from "@/lib/images";
+import { withBase } from "@/lib/urls";
 
 const doctorPicture = getPictureProps(
   site.aboutDoctor.imageKey,
@@ -12,7 +14,10 @@ const doctorPicture = getPictureProps(
 );
 ---
 
-<section class="bg-white py-14 sm:py-20">
+<section
+  class="bg-texture bg-white py-14 sm:py-20"
+  style={`--texture-image: url('${withBase("/images/background-2.png")}'); --texture-opacity: 0.07;`}
+>
   <Container>
     <div class="grid items-start gap-8 lg:grid-cols-5">
       <div class="lg:col-span-2">
@@ -26,15 +31,19 @@ const doctorPicture = getPictureProps(
           title={site.aboutDoctor.title}
           subtitle={site.doctor.fullName}
         />
-        <p
-          class="mt-4 inline-flex rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-700"
-        >
-          {site.doctor.credentialId}
-        </p>
-        <div class="mt-6 space-y-4">
+        {
+          site.doctor.credentialId && (
+            <div class="mt-4">
+              <Badge class="font-sans font-medium">
+                {site.doctor.credentialId}
+              </Badge>
+            </div>
+          )
+        }
+        <div class="mt-6 space-y-5">
           {
             site.aboutDoctor.bio.map((paragraph) => (
-              <p class="text-base text-slate-700">{paragraph}</p>
+              <p class="font-sans text-body text-slate-600">{paragraph}</p>
             ))
           }
         </div>

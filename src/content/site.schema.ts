@@ -23,9 +23,14 @@ const faqItemSchema = z
 
 const galleryImageSchema = z
   .object({
-    imageKey: z.string().min(1),
+    srcKey: z.enum(["consultorio", "equipoMedico", "doctor"]),
     alt: z.string().min(1),
-    caption: z.string().min(1).optional(),
+    caption: z
+      .string()
+      .min(1)
+      .refine((value) => value.trim().split(/\s+/).length <= 8, {
+        message: "caption must contain at most 8 words",
+      }),
   })
   .strict();
 
@@ -183,13 +188,7 @@ export const siteSchema = z
           .strict(),
       })
       .strict(),
-    clinicGallery: z
-      .object({
-        title: z.string().min(1),
-        subtitle: z.string().min(1).optional(),
-        images: z.array(galleryImageSchema).length(3),
-      })
-      .strict(),
+    clinicGallery: z.array(galleryImageSchema).length(3),
     aboutDoctor: z
       .object({
         title: z.string().min(1),

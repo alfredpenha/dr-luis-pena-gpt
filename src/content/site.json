@@ -1,37 +1,37 @@
 {
   "meta": {
-    "siteName": "Consultorio del Dr. Luis Alberto Pena Molina",
-    "title": "Medicina General y Ultrasonido Diagnostico",
-    "description": "Atencion medica local con enfoque clinico y ultrasonido diagnostico.",
+    "siteName": "Consultorio del Dr. Luis Alberto Peña Molina",
+    "title": "Medicina general y ultrasonido diagnóstico",
+    "description": "Atención médica local con enfoque clínico y ultrasonido diagnóstico.",
     "locale": "es-MX",
     "baseUrl": "https://example.github.io/dr-luis-pena-gpt",
     "ogImage": "/images/doctor.jpeg"
   },
   "brand": {
-    "clinicName": "Consultorio Medico Cintalapa",
-    "lockupText": "Dr. Luis Alberto Pena Molina",
-    "tagline": "Atencion cercana con respaldo clinico"
+    "clinicName": "Consultorio Médico Cintalapa",
+    "lockupText": "Dr. Luis Alberto Peña Molina",
+    "tagline": "Atención cercana con respaldo clínico"
   },
   "doctor": {
-    "fullName": "Dr. Luis Alberto Pena Molina",
-    "credentialId": "Cedula profesional: pendiente",
-    "specialties": ["Medicina General", "Ultrasonido Diagnostico"],
-    "shortBio": "Consulta medica con seguimiento personalizado y apoyo diagnostico por ultrasonido."
+    "fullName": "Dr. Luis Alberto Peña Molina",
+    "credentialId": "Cédula profesional disponible en consulta.",
+    "specialties": ["Medicina General", "Ultrasonido Diagnóstico"],
+    "shortBio": "Consulta médica con seguimiento personalizado y apoyo diagnóstico por ultrasonido."
   },
   "contact": {
     "phone": "9616061492",
     "whatsapp": "9616061492",
-    "addressLine": "Consultorio medico, Cintalapa",
+    "addressLine": "Consultorio médico, Cintalapa",
     "city": "Cintalapa",
     "state": "Chiapas",
     "mapsUrl": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas",
-    "address": "Consultorio medico, Cintalapa",
+    "address": "Consultorio médico, Cintalapa",
     "country": "MX",
     "googleMapsUrl": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
   },
   "hours": {
-    "daysLabel": "Martes y Jueves",
-    "timeLabel": "4:00-6:00 pm",
+    "daysLabel": "Martes y jueves",
+    "timeLabel": "4:00-6:00 p. m.",
     "openingHours": ["Tu 16:00-18:00", "Th 16:00-18:00"]
   },
   "nav": {
@@ -45,7 +45,7 @@
         "href": "/#servicios"
       },
       {
-        "label": "Ubicacion",
+        "label": "Ubicación",
         "href": "/#ubicacion"
       },
       {
@@ -57,42 +57,42 @@
   "ctas": {
     "primaryLabel": "Enviar WhatsApp",
     "primaryHref": "https://wa.me/529616061492",
-    "secondaryLabel": "Ver politica de privacidad",
+    "secondaryLabel": "Ver política de privacidad",
     "secondaryHref": "/privacy"
   },
   "hero": {
-    "eyebrow": "Medico local en Cintalapa",
-    "h1": "Medicina General y Ultrasonido Diagnostico",
-    "subheadline": "Atencion clara, cercana y con criterio clinico.",
-    "description": "Agenda por WhatsApp para valoracion medica y seguimiento oportuno.",
+    "eyebrow": "Médico local en Cintalapa",
+    "h1": "Medicina general y ultrasonido diagnóstico",
+    "subheadline": "Atención clara, cercana y con criterio clínico.",
+    "description": "Agenda por WhatsApp para valoración médica y seguimiento oportuno.",
     "ctas": {
       "primary": {
         "label": "Enviar WhatsApp",
         "href": "https://wa.me/529616061492"
       },
       "secondary": {
-        "label": "Ver ubicacion",
+        "label": "Ver ubicación",
         "href": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
       }
     },
     "image": {
       "srcKey": "doctor",
-      "alt": "Dr. Luis Alberto Pena Molina en consultorio"
+      "alt": "Dr. Luis Alberto Peña Molina en consultorio"
     },
-    "headline": "Medicina General y Ultrasonido Diagnostico en Cintalapa",
+    "headline": "Medicina general y ultrasonido diagnóstico en Cintalapa",
     "imageKey": "doctor",
-    "imageAlt": "Dr. Luis Alberto Pena Molina en consultorio"
+    "imageAlt": "Dr. Luis Alberto Peña Molina en consultorio"
   },
   "trust": {
     "items": [
       {
-        "title": "Atencion medica local",
+        "title": "Atención médica local",
         "subtitle": "Cintalapa, Chiapas",
         "iconKey": "location"
       },
       {
         "title": "Horario fijo",
-        "subtitle": "Martes y Jueves 4:00-6:00 pm",
+        "subtitle": "Martes y jueves, 4:00-6:00 p. m.",
         "iconKey": "clock"
       },
       {
@@ -104,111 +104,107 @@
   },
   "trustBar": {
     "items": [
-      "Dr. Luis Alberto Pena Molina",
-      "Martes y Jueves 4:00-6:00 pm",
+      "Dr. Luis Alberto Peña Molina",
+      "Martes y jueves, 4:00-6:00 p. m.",
       "Cintalapa, Chiapas"
     ]
   },
   "valueProp": {
-    "title": "Atencion medica enfocada en resolver",
+    "title": "Atención médica enfocada en resolver",
     "bullets": [
       "Consulta de medicina general para primera vez y seguimiento.",
-      "Atencion en Cintalapa, Chiapas, con trato cercano.",
-      "Horario de consulta: Martes y Jueves de 4:00 a 6:00 pm.",
-      "Agenda rapido por WhatsApp para coordinar tu cita."
+      "Atención en Cintalapa, Chiapas, con trato cercano.",
+      "Horario de consulta: martes y jueves de 4:00 a 6:00 p. m.",
+      "Agenda rápido por WhatsApp para coordinar tu cita."
     ]
   },
   "services": {
     "title": "Servicios",
     "generalMedicine": {
-      "title": "Medicina General",
+      "title": "Medicina general",
       "items": [
         "Consulta de primera vez",
         "Consulta de seguimiento",
-        "Valoracion clinica integral",
+        "Valoración clínica integral",
         "Control de padecimientos comunes"
       ],
-      "note": "Los estudios y tratamientos se indican segun valoracion medica."
+      "note": "Los estudios y tratamientos se indican según valoración médica."
     },
     "ultrasound": {
-      "title": "Ultrasonido Diagnostico",
+      "title": "Ultrasonido diagnóstico",
       "categories": [
         {
-          "title": "Tejidos y glandulas",
+          "title": "Tejidos y glándulas",
           "items": ["Tiroides", "Mama", "Tejidos blandos"]
         },
         {
           "title": "Abdomen",
           "items": [
-            "Higado y via biliar",
+            "Hígado y vía biliar",
             "Renal",
-            "Pancreas",
+            "Páncreas",
             "Bazo",
             "Vejiga"
           ]
         },
         {
-          "title": "Ginecologia y obstetricia",
-          "items": ["Utero y anexos", "Obstetrico"]
+          "title": "Ginecología y obstetricia",
+          "items": ["Útero y anexos", "Obstétrico"]
         },
         {
-          "title": "Urologia",
-          "items": ["Prostata", "Renal"]
+          "title": "Urología",
+          "items": ["Próstata", "Renal"]
         }
       ]
     }
   },
-  "clinicGallery": {
-    "title": "Instalaciones del consultorio",
-    "subtitle": "Espacios orientados a una atencion medica clara y ordenada.",
-    "images": [
-      {
-        "imageKey": "consultorio",
-        "alt": "Area principal del consultorio",
-        "caption": "Consultorio para valoracion y seguimiento"
-      },
-      {
-        "imageKey": "equipoMedico",
-        "alt": "Equipo medico para estudios de ultrasonido",
-        "caption": "Equipo para ultrasonido diagnostico"
-      },
-      {
-        "imageKey": "doctor",
-        "alt": "Dr. Luis Alberto Pena Molina en consulta",
-        "caption": "Atencion personalizada durante la consulta"
-      }
-    ]
-  },
+  "clinicGallery": [
+    {
+      "srcKey": "consultorio",
+      "alt": "Área principal del consultorio",
+      "caption": "Consultorio en funcionamiento diario"
+    },
+    {
+      "srcKey": "equipoMedico",
+      "alt": "Equipo médico para estudios de ultrasonido",
+      "caption": "Equipo de ultrasonido diagnóstico"
+    },
+    {
+      "srcKey": "doctor",
+      "alt": "Dr. Luis Alberto Peña Molina durante atención",
+      "caption": "Atención médica directa al paciente"
+    }
+  ],
   "aboutDoctor": {
     "title": "Sobre el doctor",
     "imageKey": "doctor",
-    "imageAlt": "Retrato del Dr. Luis Alberto Pena Molina",
+    "imageAlt": "Retrato del Dr. Luis Alberto Peña Molina",
     "bio": [
-      "Dr. Luis Alberto Pena Molina brinda consulta de medicina general con seguimiento clinico individualizado.",
-      "Integra ultrasonido diagnostico para apoyar decisiones medicas con evaluacion oportuna.",
-      "Atiende en Cintalapa, Chiapas, en horario de Martes y Jueves de 4:00 a 6:00 pm."
+      "Dr. Luis Alberto Peña Molina brinda consulta de medicina general con seguimiento clínico individualizado.",
+      "Integra ultrasonido diagnóstico para apoyar decisiones médicas con evaluación oportuna.",
+      "Atiende en Cintalapa, Chiapas, en horario de martes y jueves de 4:00 a 6:00 p. m."
     ]
   },
   "process": {
-    "title": "Proceso de atencion",
+    "title": "Proceso de atención",
     "steps": [
       {
         "title": "1. Contacto inicial",
-        "description": "Envia un mensaje por WhatsApp para indicar tu motivo de consulta y disponibilidad."
+        "description": "Envía un mensaje por WhatsApp para indicar tu motivo de consulta y disponibilidad."
       },
       {
-        "title": "2. Valoracion medica",
-        "description": "Se realiza interrogatorio y exploracion para establecer el plan de atencion."
+        "title": "2. Valoración médica",
+        "description": "Se realiza interrogatorio y exploración para establecer el plan de atención."
       },
       {
         "title": "3. Seguimiento",
-        "description": "Se da continuidad clinica y, si aplica, control con estudio de ultrasonido diagnostico."
+        "description": "Se da continuidad clínica y, si aplica, control con estudio de ultrasonido diagnóstico."
       }
     ]
   },
   "locationHours": {
-    "title": "Ubicacion y horarios",
-    "subtitle": "Consulta la direccion del consultorio y agenda en horarios disponibles.",
+    "title": "Ubicación y horarios",
+    "subtitle": "Consulta la dirección del consultorio y agenda en horarios disponibles.",
     "actions": [
       {
         "label": "Abrir en Google Maps",
@@ -242,10 +238,10 @@
         "href": "https://maps.google.com/?q=Cintalapa%2C%20Chiapas"
       }
     ],
-    "note": "Atencion con cita previa y seguimiento clinico."
+    "note": "Atención con cita previa y seguimiento clínico."
   },
   "finalCta": {
-    "title": "Agenda tu atencion por WhatsApp",
+    "title": "Agenda tu atención por WhatsApp",
     "description": "Comparte tu motivo de consulta para orientarte y coordinar tu cita.",
     "buttonLabel": "Enviar WhatsApp",
     "buttonHref": "https://wa.me/529616061492"
@@ -257,20 +253,20 @@
   },
   "faq": [
     {
-      "q": "Se requiere cita previa?",
-      "a": "Se recomienda agendar para optimizar tiempos de atencion."
+      "q": "¿Se requiere cita previa?",
+      "a": "Se recomienda agendar para optimizar tiempos de atención."
     },
     {
-      "q": "Puedo solicitar ultrasonido el mismo dia?",
+      "q": "¿Puedo solicitar ultrasonido el mismo día?",
       "a": "La disponibilidad depende de agenda y tipo de estudio requerido."
     }
   ],
   "privacy": {
-    "title": "Politica de privacidad",
+    "title": "Política de privacidad",
     "body": [
-      "La informacion proporcionada por pacientes se utiliza exclusivamente para atencion medica, seguimiento clinico y gestion administrativa del consultorio.",
-      "Los datos personales se resguardan con medidas razonables de seguridad y no se comparten con terceros sin autorizacion, salvo requerimiento legal aplicable.",
-      "Para dudas sobre privacidad o actualizacion de datos, puedes comunicarte por telefono o WhatsApp en los canales oficiales del consultorio."
+      "La información proporcionada por pacientes se utiliza exclusivamente para atención médica, seguimiento clínico y gestión administrativa del consultorio.",
+      "Los datos personales se resguardan con medidas razonables de seguridad y no se comparten con terceros sin autorización, salvo requerimiento legal aplicable.",
+      "Para dudas sobre privacidad o actualización de datos, puedes comunicarte por teléfono o WhatsApp en los canales oficiales del consultorio."
     ]
   },
   "analytics": {

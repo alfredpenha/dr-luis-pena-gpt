@@ -4,46 +4,59 @@ import Container from "@/components/ui/Container.astro";
 import Button from "@/components/ui/Button.astro";
 import { site } from "@/lib/content";
 import { getPictureProps } from "@/lib/images";
+import { withBase } from "@/lib/urls";
 
 const heroPicture = getPictureProps(
-  site.hero.imageKey,
-  site.hero.imageAlt,
+  site.hero.image.srcKey,
+  site.hero.image.alt,
   "hero",
   "eager",
 );
 ---
 
-<section class="bg-gradient-to-b from-white to-slate-100 py-14 sm:py-20">
+<section
+  class="bg-texture bg-gradient-to-b from-white to-slate-100 py-14 sm:py-20"
+  style={`--texture-image: url('${withBase("/images/background-1.png")}'); --texture-opacity: 0.08;`}
+>
   <Container>
     <div class="grid items-center gap-10 lg:grid-cols-2">
       <div>
-        <p class="text-sm font-semibold tracking-wide text-red-700">
-          {site.doctor.fullName}
+        <p
+          class="font-sans text-xs font-medium uppercase tracking-wider text-primary-700"
+        >
+          {site.hero.eyebrow}
         </p>
         <h1
-          class="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+          class="mb-2 mt-5 max-w-[18ch] font-serif text-h1 font-normal tracking-[0.2px] text-slate-900 md:mt-6 md:text-h1-desktop"
         >
-          {site.hero.headline}
+          {site.hero.h1}
         </h1>
-        <p class="mt-5 max-w-2xl text-lg text-slate-700">
+        <p
+          class="mt-6 max-w-2xl font-sans text-body font-medium text-slate-700"
+        >
           {site.hero.subheadline}
+        </p>
+        <p class="mt-3 max-w-2xl text-body text-slate-600">
+          {site.hero.description}
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <Button
-            href={site.ctas.primaryHref}
+            href={site.hero.ctas.primary.href}
             variant="whatsapp"
-            ariaLabel={site.ctas.primaryLabel}
+            ariaLabel={site.hero.ctas.primary.label}
             trackEvent="click_whatsapp"
             trackSource="hero"
           >
-            {site.ctas.primaryLabel}
+            {site.hero.ctas.primary.label}
           </Button>
           <Button
-            href={site.ctas.secondaryHref}
+            href={site.hero.ctas.secondary.href}
             variant="secondary"
-            ariaLabel={site.ctas.secondaryLabel}
+            ariaLabel={site.hero.ctas.secondary.label}
+            trackEvent="click_maps"
+            trackSource="hero"
           >
-            {site.ctas.secondaryLabel}
+            {site.hero.ctas.secondary.label}
           </Button>
         </div>
       </div>

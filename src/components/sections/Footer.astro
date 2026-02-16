@@ -22,27 +22,29 @@ import { withBase } from "@/lib/urls";
             class="size-14 object-contain"
           />
           <div>
-            <p class="text-sm font-semibold text-text">
+            <p class="font-sans text-secondary font-semibold text-slate-700">
               {site.brand.clinicName}
             </p>
-            <p class="text-xs text-muted-600">{site.brand.lockupText}</p>
+            <p class="font-sans text-xs text-slate-500">
+              {site.brand.lockupText}
+            </p>
           </div>
         </a>
         {
           site.footer.note && (
-            <p class="mt-4 max-w-sm text-sm text-muted-600">
+            <p class="mt-4 max-w-sm text-secondary text-slate-500">
               {site.footer.note}
             </p>
           )
         }
       </div>
 
-      <div class="space-y-2 text-sm text-muted-700">
+      <div class="space-y-2 text-secondary text-slate-500">
         <a
           href={`tel:${site.contact.phone}`}
           data-track-event="click_call"
           data-track-source="footer"
-          class="block w-fit rounded-card text-muted-700 hover:text-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+          class="inline-flex min-h-11 items-center rounded-card text-slate-500 hover:text-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
         >
           Tel: {site.contact.phone}
         </a>
@@ -50,7 +52,7 @@ import { withBase } from "@/lib/urls";
           href={site.ctas.primaryHref}
           data-track-event="click_whatsapp"
           data-track-source="footer"
-          class="block w-fit rounded-card text-green-700 hover:text-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+          class="inline-flex min-h-11 items-center rounded-card text-green-700 hover:text-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
         >
           WhatsApp: {site.contact.whatsapp}
         </a>
@@ -58,16 +60,19 @@ import { withBase } from "@/lib/urls";
           {site.contact.city}, {site.contact.state}
         </p>
         <p>
-          {site.hours.daysLabel} · {site.hours.timeLabel}
+          {site.hours.daysLabel} &middot; {site.hours.timeLabel}
         </p>
       </div>
 
-      <nav class="flex flex-col gap-2 text-sm" aria-label="Enlaces del footer">
+      <nav
+        class="flex flex-col gap-2 text-secondary"
+        aria-label="Enlaces del footer"
+      >
         {
           site.footer.quickLinks.map((link) => (
             <a
               href={withBase(link.href)}
-              class="w-fit rounded-card text-muted-700 hover:text-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+              class="inline-flex min-h-11 items-center rounded-card text-slate-500 hover:text-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
             >
               {link.label}
             </a>

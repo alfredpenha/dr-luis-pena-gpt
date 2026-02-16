@@ -4,19 +4,24 @@ import Button from "@/components/ui/Button.astro";
 import { site } from "@/lib/content";
 ---
 
-<section class="py-14 sm:py-20">
+<section class="bg-slate-50 py-14 sm:py-20">
   <Container>
     <div
       class="rounded-3xl bg-blue-800 px-6 py-10 text-white sm:px-10 sm:py-12"
     >
-      <h2 class="text-3xl font-bold tracking-tight">{site.finalCta.title}</h2>
-      <p class="mt-4 max-w-2xl text-blue-100">{site.finalCta.description}</p>
+      <h2
+        class="font-serif text-h2 font-normal tracking-[0.2px] md:text-h2-desktop"
+      >
+        {site.finalCta.title}
+      </h2>
+      <p class="mt-4 max-w-2xl text-body text-blue-100">
+        {site.finalCta.description}
+      </p>
       <div class="mt-8">
         <Button
           href={site.finalCta.buttonHref}
           variant="whatsapp"
           ariaLabel={site.finalCta.buttonLabel}
-          class="bg-green-500 hover:bg-green-600 focus-visible:outline-green-200"
         >
           {site.finalCta.buttonLabel}
         </Button>

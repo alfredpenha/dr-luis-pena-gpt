@@ -26,7 +26,7 @@ const {
 } = Astro.props;
 
 const baseClass =
-  "inline-flex min-h-11 items-center justify-center rounded-card font-semibold transition-colors duration-150 active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  "inline-flex min-h-11 items-center justify-center rounded-card font-sans font-semibold transition-colors duration-150 active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const sizeClassByName: Record<Size, string> = {
   sm: "px-4 text-sm leading-[22px]",
@@ -40,7 +40,7 @@ const variantClassByName: Record<Variant, string> = {
   secondary:
     "border border-primary-100 bg-surface text-primary-700 hover:bg-primary-50 active:bg-primary-100 focus-visible:outline-primary-700",
   whatsapp:
-    "bg-green-600 text-white hover:bg-green-700 active:bg-green-700 focus-visible:outline-green-700",
+    "bg-green-700 text-white hover:bg-green-800 active:bg-green-800 focus-visible:outline-green-800",
 };
 
 const classes = `${baseClass} ${sizeClassByName[size]} ${variantClassByName[variant]} ${className ?? ""}`;

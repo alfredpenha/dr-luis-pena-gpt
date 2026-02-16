@@ -15,14 +15,14 @@ const resolvedDescription = description ?? subtitle;
 <div class:list={["max-w-3xl", alignmentClass]}>
   {
     eyebrow && (
-      <p class="text-sm font-semibold leading-[22px] text-primary-700">
+      <p class="font-sans text-xs font-medium uppercase tracking-wider text-primary-700">
         {eyebrow}
       </p>
     )
   }
   <h2
     class:list={[
-      "text-[28px] font-bold leading-[1.286] tracking-tight text-text",
+      "font-serif text-h2 font-normal tracking-[0.2px] text-slate-900 md:text-h2-desktop",
       eyebrow ? "mt-2" : "",
     ]}
   >
@@ -30,9 +30,7 @@ const resolvedDescription = description ?? subtitle;
   </h2>
   {
     resolvedDescription && (
-      <p class="mt-3 text-base leading-[26px] text-text-secondary">
-        {resolvedDescription}
-      </p>
+      <p class="mt-4 text-body text-slate-600">{resolvedDescription}</p>
     )
   }
 </div>
