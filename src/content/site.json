@@ -34,18 +34,6 @@
     "timeLabel": "4:00-6:00 p. m.",
     "openingHours": ["Tu 16:00-18:00", "Th 16:00-18:00"]
   },
-  "maps": {
-    "provider": "google",
-    "static": {
-      "enabled": true,
-      "centerQuery": "5 Av. Sur Pte. 350, Central, 30400, Cintalapa, Chiapas",
-      "zoom": 16,
-      "size": "640x420",
-      "scale": 2,
-      "maptype": "roadmap",
-      "markerColor": "0x163A59"
-    }
-  },
   "nav": {
     "items": [
       { "label": "Inicio", "href": "/" },

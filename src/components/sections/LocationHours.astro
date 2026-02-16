@@ -4,7 +4,7 @@ import SectionTitle from "@/components/ui/SectionTitle.astro";
 import Button from "@/components/ui/Button.astro";
 import MapPreview from "@/components/ui/MapPreview.astro";
 import { site } from "@/lib/content";
-import { getGoogleStaticMapUrl } from "@/lib/maps";
+import { withBase } from "@/lib/urls";
 
 function getTrackEvent(
   href: string,
@@ -35,10 +35,7 @@ const mapsAction =
     variant: "secondary" as const,
   };
 
-const staticMapUrl =
-  site.maps.provider === "google" && site.maps.static.enabled
-    ? getGoogleStaticMapUrl(site.maps.static)
-    : null;
+const mapPreviewSrc = withBase("/images/mapa.png");
 ---
 
 <section id="ubicacion" class="bg-surface-elevated py-14 sm:py-20">
@@ -85,7 +82,7 @@ const staticMapUrl =
 
       <MapPreview
         mapsUrl={mapsAction.href}
-        staticMapUrl={staticMapUrl}
+        staticMapUrl={mapPreviewSrc}
         alt={`Mapa del consultorio en ${site.contact.addressLine}, ${site.contact.city}, ${site.contact.state}`}
       />
     </div>

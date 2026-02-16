@@ -71,18 +71,6 @@ const footerLinkSchema = z
   })
   .strict();
 
-const mapsStaticSchema = z
-  .object({
-    enabled: z.boolean(),
-    centerQuery: z.string().min(1),
-    zoom: z.number().int().min(0).max(21),
-    size: z.string().regex(/^\d+x\d+$/, "size must follow WIDTHxHEIGHT"),
-    scale: z.number().int().min(1).max(2),
-    maptype: z.enum(["roadmap", "satellite", "terrain", "hybrid"]),
-    markerColor: z.string().regex(/^0x[0-9A-Fa-f]{6}$/),
-  })
-  .strict();
-
 export const siteSchema = z
   .object({
     meta: z
@@ -128,12 +116,6 @@ export const siteSchema = z
         daysLabel: z.string().min(1),
         timeLabel: z.string().min(1),
         openingHours: z.array(z.string().min(1)).optional(),
-      })
-      .strict(),
-    maps: z
-      .object({
-        provider: z.enum(["google"]),
-        static: mapsStaticSchema,
       })
       .strict(),
     nav: z
