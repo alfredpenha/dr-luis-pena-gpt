@@ -173,6 +173,7 @@ export const siteSchema = z
     services: z
       .object({
         title: z.string().min(1),
+        description: z.string().min(1),
         generalMedicine: z
           .object({
             title: z.string().min(1),
@@ -183,6 +184,7 @@ export const siteSchema = z
         ultrasound: z
           .object({
             title: z.string().min(1),
+            intro: z.string().min(1),
             categories: z.array(ultrasoundCategorySchema).min(1),
           })
           .strict(),

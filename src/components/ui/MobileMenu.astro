@@ -1,0 +1,239 @@
+---
+import Button from "@/components/ui/Button.astro";
+import { withBase } from "@/lib/urls";
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  items: NavItem[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { items, ctaLabel, ctaHref } = Astro.props;
+---
+
+<div class="md:hidden" data-mobile-menu>
+  <button
+    type="button"
+    data-menu-toggle
+    class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-border/40 bg-surface/70 outline-none transition-colors duration-150 hover:bg-surface focus-visible:outline-none focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+    aria-label="Abrir menú"
+    aria-expanded="false"
+    aria-controls="mobile-menu-panel"
+  >
+    <span class="sr-only">Menú</span>
+    <span class="relative block h-4 w-5">
+      <span
+        data-menu-line="top"
+        class="absolute left-0 top-0 block h-0.5 w-5 rounded-full bg-text transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]"
+      ></span>
+      <span
+        data-menu-line="middle"
+        class="absolute left-0 top-[7px] block h-0.5 w-5 rounded-full bg-text transition-opacity duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]"
+      ></span>
+      <span
+        data-menu-line="bottom"
+        class="absolute left-0 top-[14px] block h-0.5 w-5 rounded-full bg-text transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]"
+      ></span>
+    </span>
+  </button>
+
+  <div
+    data-menu-overlay
+    class="pointer-events-none fixed inset-0 z-[60] bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-200 ease-out"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    data-menu-root
+    class="pointer-events-none fixed inset-0 z-[70] flex items-start justify-center p-6 pt-20"
+  >
+    <div
+      id="mobile-menu-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navegación principal"
+      data-menu-panel
+      tabindex="-1"
+      class="pointer-events-auto w-[calc(100%-48px)] max-w-[320px] rounded-2xl border border-border/30 bg-surface p-7 opacity-0 shadow-[0_30px_80px_rgba(0,0,0,0.22)] transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:transform-none motion-reduce:transition-opacity -translate-y-3 scale-[0.97]"
+    >
+      <nav class="flex flex-col gap-3" aria-label="Navegación móvil">
+        {
+          items.map((item, index) => (
+            <a
+              href={withBase(item.href)}
+              data-menu-link
+              class="rounded-xl px-4 py-3 text-base font-medium text-text outline-none transition-all duration-150 ease-out hover:translate-x-[3px] hover:bg-muted/60 active:bg-muted focus-visible:outline-none focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              {...(index === 0 ? { "data-menu-first-link": true } : {})}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="mt-8 border-t border-border/30 pt-8">
+        <Button
+          href={ctaHref}
+          variant="whatsapp"
+          class="w-full min-h-12 outline-none focus-visible:outline-none focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          ariaLabel={ctaLabel}
+          trackEvent="click_whatsapp"
+          trackSource="header"
+        >
+          {ctaLabel}
+        </Button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const menu = document.querySelector("[data-mobile-menu]");
+    if (!menu) return;
+
+    const toggleButton = menu.querySelector("[data-menu-toggle]");
+    const overlay = menu.querySelector("[data-menu-overlay]");
+    const panel = menu.querySelector("[data-menu-panel]");
+    const firstLink = menu.querySelector("[data-menu-first-link]");
+    const navLinks = panel.querySelectorAll('a[href]');
+    const topLine = menu.querySelector('[data-menu-line="top"]');
+    const middleLine = menu.querySelector('[data-menu-line="middle"]');
+    const bottomLine = menu.querySelector('[data-menu-line="bottom"]');
+
+    if (
+      !(toggleButton instanceof HTMLButtonElement) ||
+      !(overlay instanceof HTMLDivElement) ||
+      !(panel instanceof HTMLDivElement) ||
+      !(topLine instanceof HTMLSpanElement) ||
+      !(middleLine instanceof HTMLSpanElement) ||
+      !(bottomLine instanceof HTMLSpanElement)
+    ) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const transitionMs = prefersReducedMotion ? 120 : 200;
+    let isOpen = false;
+    const focusableSelector =
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const getFocusable = () =>
+      Array.from(panel.querySelectorAll(focusableSelector)).filter(
+        (el) =>
+          el instanceof HTMLElement &&
+          !el.hasAttribute("disabled") &&
+          el.tabIndex !== -1,
+      );
+
+    const setScrollLock = (enabled) => {
+      if (enabled) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+    };
+
+    const setHamburgerState = (open) => {
+      if (open) {
+        topLine.classList.add("rotate-45", "translate-y-[6px]");
+        middleLine.classList.add("opacity-0");
+        bottomLine.classList.add("-rotate-45", "-translate-y-[6px]");
+      } else {
+        topLine.classList.remove("rotate-45", "translate-y-[6px]");
+        middleLine.classList.remove("opacity-0");
+        bottomLine.classList.remove("-rotate-45", "-translate-y-[6px]");
+      }
+    };
+
+    const openMenu = () => {
+      isOpen = true;
+      toggleButton.setAttribute("aria-expanded", "true");
+      toggleButton.setAttribute("aria-label", "Cerrar menú");
+      setHamburgerState(true);
+      overlay.classList.remove("pointer-events-none", "opacity-0");
+      panel.classList.remove("opacity-0", "-translate-y-3", "scale-[0.97]");
+      panel.classList.add("opacity-100", "translate-y-0", "scale-100");
+      setScrollLock(true);
+      window.setTimeout(() => {
+        if (firstLink instanceof HTMLElement) {
+          firstLink.focus();
+        } else {
+          panel.focus();
+        }
+      }, 10);
+    };
+
+    const closeMenu = (focusToggle = true) => {
+      isOpen = false;
+      toggleButton.setAttribute("aria-expanded", "false");
+      toggleButton.setAttribute("aria-label", "Abrir menú");
+      setHamburgerState(false);
+      overlay.classList.add("opacity-0");
+      panel.classList.add("opacity-0", "-translate-y-3", "scale-[0.97]");
+      panel.classList.remove("opacity-100", "translate-y-0", "scale-100");
+      window.setTimeout(() => {
+        overlay.classList.add("pointer-events-none");
+      }, transitionMs);
+      setScrollLock(false);
+      if (focusToggle) toggleButton.focus();
+    };
+
+    const onToggle = () => {
+      if (isOpen) closeMenu(false);
+      else openMenu();
+    };
+
+    const onKeyDown = (event) => {
+      if (!isOpen) return;
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusables = getFocusable();
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    const closeOnDesktop = () => {
+      if (window.innerWidth >= 768 && isOpen) {
+        closeMenu(false);
+      }
+    };
+
+    toggleButton.addEventListener("click", onToggle);
+    overlay.addEventListener("click", () => {
+      if (isOpen) closeMenu();
+    });
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (isOpen) closeMenu(false);
+      });
+    });
+    document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", closeOnDesktop);
+  })();
+</script>

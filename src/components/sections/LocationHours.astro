@@ -1,5 +1,5 @@
 ---
-import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import Button from "@/components/ui/Button.astro";
 import MapPreview from "@/components/ui/MapPreview.astro";
@@ -38,53 +38,51 @@ const mapsAction =
 const mapPreviewSrc = withBase("/images/mapa.png");
 ---
 
-<section id="ubicacion" class="bg-surface-elevated py-14 sm:py-20">
-  <Container>
-    <div class="grid gap-8 lg:grid-cols-2">
-      <div>
-        <SectionTitle
-          title={site.locationHours.title}
-          subtitle={site.locationHours.subtitle}
-        />
-        <div class="mt-6 space-y-3">
-          <p
-            class="rounded-lg border border-border bg-muted px-4 py-3 text-secondary text-text-muted"
-          >
-            {site.contact.addressLine}
-          </p>
-          <p
-            class="rounded-lg border border-border bg-muted px-4 py-3 text-secondary text-text-muted"
-          >
-            {site.contact.city}, {site.contact.state}
-          </p>
-          <p
-            class="rounded-lg border border-border bg-muted px-4 py-3 text-secondary text-text-muted"
-          >
-            {site.hours.daysLabel} &middot; {site.hours.timeLabel}
-          </p>
-        </div>
-        <div class="mt-6 flex flex-wrap gap-3">
-          {
-            site.locationHours.actions.map((action) => (
-              <Button
-                href={action.href}
-                variant={action.variant}
-                ariaLabel={action.label}
-                trackEvent={getTrackEvent(action.href)}
-                trackSource="location"
-              >
-                {action.label}
-              </Button>
-            ))
-          }
-        </div>
-      </div>
-
-      <MapPreview
-        mapsUrl={mapsAction.href}
-        staticMapUrl={mapPreviewSrc}
-        alt={`Mapa del consultorio en ${site.contact.addressLine}, ${site.contact.city}, ${site.contact.state}`}
+<Section id="ubicacion" variant="loose" className="bg-muted py-14 md:py-20">
+  <div class="grid gap-4 md:gap-6 lg:grid-cols-2">
+    <div>
+      <SectionTitle
+        title={site.locationHours.title}
+        subtitle={site.locationHours.subtitle}
       />
+      <div class="mt-6 space-y-3 md:mt-8">
+        <p
+          class="rounded-xl border border-border/40 bg-surface px-4 py-3 text-secondary text-text-muted"
+        >
+          {site.contact.addressLine}
+        </p>
+        <p
+          class="rounded-xl border border-border/40 bg-surface px-4 py-3 text-secondary text-text-muted"
+        >
+          {site.contact.city}, {site.contact.state}
+        </p>
+        <p
+          class="rounded-xl border border-border/40 bg-surface px-4 py-3 text-secondary text-text-muted"
+        >
+          {site.hours.daysLabel} &middot; {site.hours.timeLabel}
+        </p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        {
+          site.locationHours.actions.map((action) => (
+            <Button
+              href={action.href}
+              variant={action.variant}
+              ariaLabel={action.label}
+              trackEvent={getTrackEvent(action.href)}
+              trackSource="location"
+            >
+              {action.label}
+            </Button>
+          ))
+        }
+      </div>
     </div>
-  </Container>
-</section>
+
+    <MapPreview
+      mapsUrl={mapsAction.href}
+      staticMapUrl={mapPreviewSrc}
+      alt={`Mapa del consultorio en ${site.contact.addressLine}, ${site.contact.city}, ${site.contact.state}`}
+    />
+  </div>
+</Section>

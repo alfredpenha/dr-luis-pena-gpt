@@ -4,48 +4,49 @@ import logo from "@/assets/images/logo-transparente.png";
 import Container from "@/components/ui/Container.astro";
 import { site } from "@/lib/content";
 import { withBase } from "@/lib/urls";
+
+const currentYear = new Date().getFullYear();
+const footerNavItems = site.nav.items.filter((item) =>
+  ["Inicio", "Servicios", "Ubicación", "Privacidad"].includes(item.label),
+);
 ---
 
-<footer class="border-t border-border bg-surface-elevated">
-  <Container class="py-10">
-    <div class="grid gap-8 md:grid-cols-3">
-      <div>
+<footer class="border-t border-border/30 bg-surface">
+  <Container class="py-12 md:py-16">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div class="space-y-3">
         <a
           href={withBase("/")}
-          class="inline-flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          class="inline-flex items-center gap-3 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           aria-label={site.brand.clinicName}
         >
           <Image
             src={logo}
             alt={site.brand.clinicName}
-            widths={[56, 72]}
-            class="size-14 object-contain"
+            widths={[56, 72, 88]}
+            class="size-14 object-contain md:size-16"
           />
           <div>
             <p class="font-sans text-secondary font-semibold text-text">
               {site.brand.clinicName}
             </p>
-            <p class="font-sans text-xs text-text-muted">
-              {site.brand.lockupText}
-            </p>
+            <p class="font-sans text-secondary text-text-muted">{site.brand.lockupText}</p>
           </div>
         </a>
-        {
-          site.footer.note && (
-            <p class="mt-4 max-w-sm text-secondary text-text-muted">
-              {site.footer.note}
-            </p>
-          )
-        }
+        <p class="max-w-sm text-secondary text-text-muted">
+          {site.footer.note ?? "Atención con cita previa y seguimiento clínico."}
+        </p>
       </div>
 
-      <div class="space-y-2 text-secondary text-text-muted">
+      <div class="space-y-3">
+        <h3 class="font-sans text-secondary font-semibold text-text">Contacto</h3>
         <p>
           <a
             href={`tel:${site.contact.phone}`}
+            aria-label={`Llamar al consultorio al ${site.contact.phone}`}
             data-track-event="click_call"
             data-track-source="footer"
-            class="inline-flex min-h-11 items-center rounded-card text-text-muted hover:text-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            class="inline-flex min-h-11 items-center rounded-xl text-secondary text-text-muted hover:text-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             Tel: {site.contact.phone}
           </a>
@@ -53,36 +54,63 @@ import { withBase } from "@/lib/urls";
         <p>
           <a
             href={site.ctas.primaryHref}
+            aria-label={`Enviar WhatsApp al ${site.contact.whatsapp}`}
             data-track-event="click_whatsapp"
             data-track-source="footer"
-            class="inline-flex min-h-11 items-center rounded-card text-whatsapp hover:text-whatsapp-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            class="inline-flex min-h-11 items-center rounded-xl text-secondary text-whatsapp hover:text-whatsapp-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             WhatsApp: {site.contact.whatsapp}
           </a>
         </p>
-        <p>
+        <p class="text-secondary text-text-muted">
+          {site.contact.addressLine}
+        </p>
+        <p class="text-secondary text-text-muted">
           {site.contact.city}, {site.contact.state}
         </p>
-        <p>
+        <p class="text-secondary text-text-muted">
           {site.hours.daysLabel} &middot; {site.hours.timeLabel}
         </p>
       </div>
 
       <nav
-        class="flex flex-col gap-2 text-secondary"
+        class="flex flex-col gap-1.5"
         aria-label="Enlaces del footer"
       >
+        <h3 class="mb-1 font-sans text-secondary font-semibold text-text">Navegación</h3>
         {
-          site.footer.quickLinks.map((link) => (
+          footerNavItems.map((link) => (
             <a
               href={withBase(link.href)}
-              class="inline-flex min-h-11 items-center rounded-card text-text-muted hover:text-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              class="inline-flex min-h-11 items-center rounded-xl text-secondary text-text-muted hover:text-primary-hover hover:underline hover:decoration-current hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {link.label}
             </a>
           ))
         }
       </nav>
+    </div>
+
+    <div class="mt-10 border-t border-border/30 pt-6">
+      <div class="flex flex-col gap-3 text-secondary text-text-muted md:flex-row md:items-center md:justify-between">
+        <p>
+          © {currentYear} {site.brand.clinicName}. Todos los derechos reservados.
+        </p>
+        <div class="flex items-center gap-4">
+          <a
+            href={withBase("/privacy")}
+            class="rounded-xl text-text-muted hover:text-primary-hover hover:underline hover:decoration-current hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            Privacidad
+          </a>
+          <a
+            href={site.contact.mapsUrl}
+            class="rounded-xl text-text-muted hover:text-primary-hover hover:underline hover:decoration-current hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            Google Maps
+          </a>
+        </div>
+      </div>
     </div>
   </Container>
 </footer>

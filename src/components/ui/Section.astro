@@ -1,0 +1,39 @@
+---
+import Container from "@/components/ui/Container.astro";
+
+interface Props {
+  id?: string;
+  variant?: "default" | "muted" | "tight" | "loose";
+  className?: string;
+  containerClass?: string;
+  style?: string;
+}
+
+const {
+  id,
+  variant = "default",
+  className,
+  containerClass,
+  style,
+} = Astro.props;
+
+const sectionClassByVariant: Record<
+  NonNullable<Props["variant"]>,
+  string
+> = {
+  default: "bg-surface-elevated py-12 md:py-16",
+  muted: "bg-muted py-12 md:py-16",
+  tight: "bg-surface-elevated py-12 md:py-14",
+  loose: "bg-surface-elevated py-14 md:py-20",
+};
+---
+
+<section
+  id={id}
+  style={style}
+  class:list={[sectionClassByVariant[variant], className]}
+>
+  <Container class={containerClass}>
+    <slot />
+  </Container>
+</section>

@@ -1,91 +1,92 @@
 ---
-import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import Card from "@/components/ui/Card.astro";
 import { site } from "@/lib/content";
 ---
 
-<section id="servicios" class="bg-surface-elevated py-14 sm:py-20">
-  <Container>
-    <SectionTitle
-      eyebrow={site.valueProp.title}
-      title={site.services.title}
-      description={site.meta.description}
-    />
+<Section id="servicios" variant="loose" className="bg-surface-elevated py-14 md:py-20">
+  <SectionTitle
+    eyebrow={site.valueProp.title}
+    title={site.services.title}
+    description={site.services.description}
+  />
 
-    <div class="mt-10 grid gap-6 lg:grid-cols-2">
-      <Card padding="lg">
-        <h3
-          class="font-serif text-h3 font-medium text-primary md:text-h3-desktop"
-        >
-          {site.services.generalMedicine.title}
-        </h3>
-        <ul class="mt-6 space-y-3">
-          {
-            site.services.generalMedicine.items.map((item) => (
-              <li class="flex items-start gap-3 border-b border-border pb-3 last:border-b-0 last:pb-0">
-                <span class="mt-2 size-1.5 rounded-full bg-primary" />
-                <span class="text-body text-text-muted">{item}</span>
-              </li>
-            ))
-          }
-        </ul>
+  <div class="mt-6 grid gap-4 md:mt-8 md:gap-6 lg:grid-cols-2">
+    <Card surface="large" padding="lg">
+      <h3
+        class="font-serif text-h3 font-medium text-primary md:text-h3-desktop"
+      >
+        {site.services.generalMedicine.title}
+      </h3>
+      <ul class="mt-6 space-y-3">
         {
-          site.services.generalMedicine.note && (
-            <p class="note-accent mt-6 rounded-card border border-border px-4 py-3 text-secondary text-text-muted">
-              {site.services.generalMedicine.note}
-            </p>
-          )
+          site.services.generalMedicine.items.map((item) => (
+            <li class="flex items-start gap-3 border-b border-border/30 pb-3 last:border-b-0 last:pb-0">
+              <span class="mt-2 size-1.5 rounded-full bg-primary" />
+              <span class="text-body text-text-muted">{item}</span>
+            </li>
+          ))
         }
-      </Card>
+      </ul>
+      {
+        site.services.generalMedicine.note && (
+          <p class="note-accent mt-6 rounded-xl border border-border/30 px-4 py-3 text-secondary text-text-muted">
+            {site.services.generalMedicine.note}
+          </p>
+        )
+      }
+    </Card>
 
-      <Card padding="lg">
-        <h3
-          class="font-serif text-h3 font-medium text-primary md:text-h3-desktop"
-        >
-          {site.services.ultrasound.title}
-        </h3>
+    <Card surface="large" padding="lg">
+      <h3
+        class="font-serif text-h3 font-medium text-primary md:text-h3-desktop"
+      >
+        {site.services.ultrasound.title}
+      </h3>
+      <p class="mt-4 text-secondary text-text-muted">
+        {site.services.ultrasound.intro}
+      </p>
 
-        <div class="mt-6 hidden space-y-4 md:block">
-          {
-            site.services.ultrasound.categories.map((category) => (
-              <section class="rounded-card border border-border bg-surface-elevated p-4 shadow-card">
-                <h4 class="text-secondary font-semibold text-text-muted">
-                  {category.title}
-                </h4>
-                <ul class="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-                  {category.items.map((item) => (
-                    <li class="text-secondary text-text-muted">{item}</li>
-                  ))}
-                </ul>
-              </section>
-            ))
-          }
-        </div>
+      <div class="mt-6 hidden space-y-4 md:block">
+        {
+          site.services.ultrasound.categories.map((category) => (
+            <section class="rounded-xl border border-border/30 bg-surface p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <h4 class="text-secondary font-semibold text-text-muted">
+                {category.title}
+              </h4>
+              <ul class="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                {category.items.map((item) => (
+                  <li class="text-secondary text-text-muted">{item}</li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
 
-        <div class="mt-6 space-y-3 md:hidden">
-          {
-            site.services.ultrasound.categories.map((category) => (
-              <details class="group rounded-card border border-border bg-surface-elevated shadow-card">
-                <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-secondary font-semibold text-text-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
-                  <span>{category.title}</span>
-                  <span
-                    class="text-primary transition group-open:rotate-45"
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-                </summary>
-                <ul class="grid gap-2 border-t border-border px-4 py-3">
-                  {category.items.map((item) => (
-                    <li class="text-secondary text-text-muted">{item}</li>
-                  ))}
-                </ul>
-              </details>
-            ))
-          }
-        </div>
-      </Card>
-    </div>
-  </Container>
-</section>
+      <div class="mt-6 space-y-3 md:hidden">
+        {
+          site.services.ultrasound.categories.map((category) => (
+            <details class="group rounded-xl border border-border/30 bg-surface shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-secondary font-semibold text-text-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
+                <span>{category.title}</span>
+                <span
+                  class="text-primary transition group-open:rotate-45"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </summary>
+              <ul class="grid gap-2 border-t border-border/30 px-4 py-3">
+                {category.items.map((item) => (
+                  <li class="text-secondary text-text-muted">{item}</li>
+                ))}
+              </ul>
+            </details>
+          ))
+        }
+      </div>
+    </Card>
+  </div>
+</Section>

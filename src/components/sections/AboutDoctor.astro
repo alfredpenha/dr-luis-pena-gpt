@@ -1,6 +1,6 @@
 ---
 import { Picture } from "astro:assets";
-import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import Badge from "@/components/ui/Badge.astro";
 import { site } from "@/lib/content";
@@ -14,40 +14,39 @@ const doctorPicture = getPictureProps(
 );
 ---
 
-<section
-  class="bg-texture bg-surface-elevated py-14 sm:py-20"
+<Section
+  variant="loose"
+  className="bg-texture bg-surface-elevated py-14 md:py-20"
   style={`--texture-image: url('${withBase("/images/background-2.png")}'); --texture-opacity: 0.07;`}
 >
-  <Container>
-    <div class="grid items-start gap-8 lg:grid-cols-5">
-      <div class="lg:col-span-2">
-        <Picture
-          {...doctorPicture}
-          class="size-full rounded-2xl border border-border object-cover shadow-sm"
-        />
-      </div>
-      <div class="lg:col-span-3">
-        <SectionTitle
-          title={site.aboutDoctor.title}
-          subtitle={site.doctor.fullName}
-        />
+  <div class="grid items-start gap-4 md:gap-6 lg:grid-cols-5">
+    <div class="lg:col-span-2">
+      <Picture
+        {...doctorPicture}
+        class="size-full rounded-2xl border border-border/40 bg-surface object-cover shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+      />
+    </div>
+    <div class="rounded-2xl border border-border/40 bg-surface p-5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] md:p-6 lg:col-span-3">
+      <SectionTitle
+        title={site.aboutDoctor.title}
+        subtitle={site.doctor.fullName}
+      />
+      {
+        site.doctor.credentialId && (
+          <div class="mt-4">
+            <Badge class="font-sans font-medium">
+              {site.doctor.credentialId}
+            </Badge>
+          </div>
+        )
+      }
+      <div class="mt-6 space-y-4 md:mt-8">
         {
-          site.doctor.credentialId && (
-            <div class="mt-4">
-              <Badge class="font-sans font-medium">
-                {site.doctor.credentialId}
-              </Badge>
-            </div>
-          )
+          site.aboutDoctor.bio.map((paragraph) => (
+            <p class="font-sans text-body text-text-muted">{paragraph}</p>
+          ))
         }
-        <div class="mt-6 space-y-5">
-          {
-            site.aboutDoctor.bio.map((paragraph) => (
-              <p class="font-sans text-body text-text-muted">{paragraph}</p>
-            ))
-          }
-        </div>
       </div>
     </div>
-  </Container>
-</section>
+  </div>
+</Section>

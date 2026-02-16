@@ -2,22 +2,35 @@
 interface Props {
   class?: string;
   padding?: "sm" | "md" | "lg";
+  surface?: "medium" | "large";
   elevated?: boolean;
 }
 
-const { class: className, padding = "md", elevated = true } = Astro.props;
+const {
+  class: className,
+  padding = "md",
+  surface = "medium",
+  elevated = true,
+} = Astro.props;
 
 const paddingClassByName: Record<"sm" | "md" | "lg", string> = {
-  sm: "p-4",
-  md: "p-6",
-  lg: "p-8",
+  sm: "p-5",
+  md: "p-5 md:p-6",
+  lg: "p-5 md:p-6",
+};
+
+const surfaceClassByName: Record<"medium" | "large", string> = {
+  medium:
+    "rounded-xl bg-surface border border-border/30 shadow-[0_2px_8px_rgba(0,0,0,0.04)]",
+  large:
+    "rounded-2xl bg-surface border border-border/40 shadow-[0_4px_20px_rgba(0,0,0,0.04)]",
 };
 ---
 
 <article
   class:list={[
-    "rounded-card border border-border bg-surface-elevated",
-    elevated ? "shadow-card" : "",
+    surfaceClassByName[surface],
+    elevated ? "" : "shadow-none",
     paddingClassByName[padding],
     className,
   ]}

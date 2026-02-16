@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import logo from "@/assets/images/logo-transparente.png";
 import Container from "@/components/ui/Container.astro";
 import Button from "@/components/ui/Button.astro";
+import MobileMenu from "@/components/ui/MobileMenu.astro";
 import { site } from "@/lib/content";
 import { withBase } from "@/lib/urls";
 ---
@@ -54,37 +55,18 @@ import { withBase } from "@/lib/urls";
           href={site.ctas.primaryHref}
           variant="whatsapp"
           size="sm"
+          class="hidden md:inline-flex"
           ariaLabel={site.ctas.primaryLabel}
           trackEvent="click_whatsapp"
           trackSource="header"
         >
           {site.ctas.primaryLabel}
         </Button>
-
-        <details class="relative md:hidden">
-          <summary
-            class="flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-card border border-border bg-surface-elevated text-sm font-semibold text-text-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            aria-label="Abrir menu de navegacion"
-          >
-            Menu
-          </summary>
-          <div
-            class="absolute right-0 top-12 w-56 rounded-block border border-border bg-surface-elevated p-3 shadow-soft"
-          >
-            <nav class="flex flex-col gap-1" aria-label="Navegacion movil">
-              {
-                site.nav.items.map((item) => (
-                  <a
-                    href={withBase(item.href)}
-                    class="rounded-card px-3 py-2 text-sm font-medium text-text-muted hover:bg-muted-subtle hover:text-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                  >
-                    {item.label}
-                  </a>
-                ))
-              }
-            </nav>
-          </div>
-        </details>
+        <MobileMenu
+          items={site.nav.items}
+          ctaLabel={site.ctas.primaryLabel}
+          ctaHref={site.ctas.primaryHref}
+        />
       </div>
     </div>
   </Container>

@@ -1,18 +1,16 @@
 ---
-import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
 import { site } from "@/lib/content";
 ---
 
-<section class="bg-muted py-8 sm:py-10">
-  <Container>
-    <div class="grid gap-4 sm:grid-cols-3">
-      {
-        site.trustBar.items.map((item) => (
-          <div class="fade-in-soft rounded-xl border border-border bg-surface-elevated px-4 py-5 text-center shadow-sm">
-            <p class="text-secondary font-medium text-text-muted">{item}</p>
-          </div>
-        ))
-      }
-    </div>
-  </Container>
-</section>
+<Section variant="muted" className="mt-8 py-12 md:mt-10 md:py-16">
+  <div class="grid gap-4 md:gap-6 sm:grid-cols-3">
+    {
+      site.trustBar.items.map((item) => (
+        <div class="fade-in-soft rounded-xl border border-border/30 bg-surface px-4 py-5 text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+          <p class="text-secondary font-medium text-text-muted">{item}</p>
+        </div>
+      ))
+    }
+  </div>
+</Section>
