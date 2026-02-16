@@ -21,7 +21,12 @@ const canonicalBase = new URL(basePath, siteOrigin)
   .replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, canonicalBase).toString();
 const ogImageUrl = site.meta.ogImage
-  ? new URL(site.meta.ogImage, canonicalBase).toString()
+  ? site.meta.ogImage.startsWith("http")
+    ? site.meta.ogImage
+    : new URL(
+        `${basePath.replace(/\/$/, "")}/${site.meta.ogImage.replace(/^\/+/, "")}`,
+        siteOrigin,
+      ).toString()
   : undefined;
 const twitterCardType = ogImageUrl ? "summary_large_image" : "summary";
 
